@@ -1,0 +1,93 @@
+"""Resource-oriented facade (vendored by phantasos).
+
+`client.<resource>` is the corresponding generated `*Api` instance. Resources are
+discovered from the generated `api/` package at build time.
+"""
+
+from __future__ import annotations
+
+from typing import Any, Callable, Iterator
+
+from ..api.access_and_data_policy_api import AccessAndDataPolicyApi
+from ..api.application_groups_api import ApplicationGroupsApi
+from ..api.applications_api import ApplicationsApi
+from ..api.configuration_management_api import ConfigurationManagementApi
+from ..api.customization_policy_api import CustomizationPolicyApi
+from ..api.device_groups_api import DeviceGroupsApi
+from ..api.devices_api import DevicesApi
+from ..api.plugins_api import PluginsApi
+from ..api.security_policy_api import SecurityPolicyApi
+from ..api.sign_in_policy_api import SignInPolicyApi
+from ..api.user_groups_api import UserGroupsApi
+from ..api.user_requests_api import UserRequestsApi
+from ..api.users_api import UsersApi
+from .auth import api_client_from_credentials, api_client_from_env
+from .pagination import paginate
+from .retry import default_retry
+
+__all__ = ["Client"]
+
+_RESOURCES = {
+    "access_and_data_policy": AccessAndDataPolicyApi,
+    "application_groups": ApplicationGroupsApi,
+    "applications": ApplicationsApi,
+    "configuration_management": ConfigurationManagementApi,
+    "customization_policy": CustomizationPolicyApi,
+    "device_groups": DeviceGroupsApi,
+    "devices": DevicesApi,
+    "plugins": PluginsApi,
+    "security_policy": SecurityPolicyApi,
+    "sign_in_policy": SignInPolicyApi,
+    "user_groups": UserGroupsApi,
+    "user_requests": UserRequestsApi,
+    "users": UsersApi,
+}
+
+
+class Client:
+    """Resource-oriented entry point. Each resource attribute is a generated *Api."""
+
+    def __init__(self, api_client):
+        self._api_client = api_client
+        if getattr(api_client.configuration, "retries", None) is None:
+            api_client.configuration.retries = default_retry()
+        for name, api_cls in _RESOURCES.items():
+            setattr(self, name, api_cls(api_client))
+
+    access_and_data_policy: AccessAndDataPolicyApi
+    application_groups: ApplicationGroupsApi
+    applications: ApplicationsApi
+    configuration_management: ConfigurationManagementApi
+    customization_policy: CustomizationPolicyApi
+    device_groups: DeviceGroupsApi
+    devices: DevicesApi
+    plugins: PluginsApi
+    security_policy: SecurityPolicyApi
+    sign_in_policy: SignInPolicyApi
+    user_groups: UserGroupsApi
+    user_requests: UserRequestsApi
+    users: UsersApi
+
+    @classmethod
+    def from_env(cls, **kwargs) -> "Client":
+        return cls(api_client_from_env(**kwargs))
+
+    @classmethod
+    def from_credentials(cls, **kwargs) -> "Client":
+        return cls(api_client_from_credentials(**kwargs))
+
+    def paginate(self, list_method: Callable[..., Any], **filters: Any) -> Iterator[Any]:
+        return paginate(list_method, **filters)
+
+    @property
+    def api_client(self):
+        return self._api_client
+
+    def close(self) -> None:
+        self._api_client.__exit__(None, None, None)
+
+    def __enter__(self) -> "Client":
+        return self
+
+    def __exit__(self, exc_type=None, exc_value=None, traceback=None) -> None:
+        self._api_client.__exit__(exc_type, exc_value, traceback)

@@ -1,0 +1,11 @@
+# Written by phantasos — these are provided by the project scaffold.
+setup.py
+setup.cfg
+requirements.txt
+test-requirements.txt
+tox.ini
+git_push.sh
+.gitlab-ci.yml
+.travis.yml
+.github/workflows/python.yml
+README.md
