@@ -29,7 +29,7 @@ class AuthenticationFactorPinCodeControlPinCode(BaseModel):
     """
     PIN code settings.
     """ # noqa: E501
-    min_length: Optional[Annotated[int, Field(le=6, strict=True, ge=4)]] = Field(default=4, description="Required PIN length.", alias="minLength")
+    min_length: Optional[Annotated[int, Field(le=8, strict=True, ge=4)]] = Field(default=6, description="Required PIN length.", alias="minLength")
     max_failed_attempts: Optional[AuthenticationFactorPinCodeControlPinCodeMaxFailedAttempts] = Field(default=AuthenticationFactorPinCodeControlPinCodeMaxFailedAttempts.NUMBER_5, alias="maxFailedAttempts")
     __properties: ClassVar[List[str]] = ["minLength", "maxFailedAttempts"]
 
@@ -84,7 +84,7 @@ class AuthenticationFactorPinCodeControlPinCode(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "minLength": obj.get("minLength") if obj.get("minLength") is not None else 4,
+            "minLength": obj.get("minLength") if obj.get("minLength") is not None else 6,
             "maxFailedAttempts": obj.get("maxFailedAttempts") if obj.get("maxFailedAttempts") is not None else AuthenticationFactorPinCodeControlPinCodeMaxFailedAttempts.NUMBER_5
         })
         return _obj

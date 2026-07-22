@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
+from pydantic import model_serializer, BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from prisma_browser.models.attribute_object_cs_zta_score_breakdown_scores import AttributeObjectCsZtaScoreBreakdownScores
 from prisma_browser.models.cs_zta_basic_score_level import CsZtaBasicScoreLevel
@@ -46,6 +46,16 @@ class AttributeObjectCsZtaScore(BaseModel):
         protected_namespaces=(),
     )
 
+
+    @model_serializer(mode="wrap")
+    def _phantasos_drop_empty_additional_properties(self, handler) -> Any:
+        """phantasos: omit an empty additional_properties bag from
+        model_dump()/model_dump_json(); non-empty bags are left untouched.
+        Respects exclude=/by_alias=/exclude_none=, so to_dict() is unchanged."""
+        data = handler(self)
+        if isinstance(data, dict) and data.get("additional_properties") == {}:
+            data.pop("additional_properties")
+        return data
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

@@ -17,11 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import model_serializer, BaseModel, ConfigDict, Field, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from prisma_browser.models.patch_scope import PatchScope
-from prisma_browser.models.rule_mode import RuleMode
+from prisma_browser.models.restricted_rule_mode import RestrictedRuleMode
 from prisma_browser.models.sign_in_rule_action import SignInRuleAction
 from typing import Optional, Set
 from typing_extensions import Self
@@ -33,11 +33,24 @@ class PatchSignInRuleByIDRequest(BaseModel):
     """ # noqa: E501
     name: Optional[Annotated[str, Field(min_length=1, strict=True, max_length=300)]] = Field(default=None, description="The name or title of the rule.")
     description: Optional[Annotated[str, Field(strict=True, max_length=300)]] = Field(default=None, description="The detailed description of the rule.")
-    mode: Optional[RuleMode] = None
     scope: Optional[PatchScope] = None
+    mode: Optional[RestrictedRuleMode] = None
     action: Optional[SignInRuleAction] = None
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["name", "description", "mode", "scope", "action"]
+    __properties: ClassVar[List[str]] = ["name", "description", "scope", "mode", "action"]
+
+    @field_validator('name')
+    def name_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not isinstance(value, str):
+            value = str(value)
+
+        if not re.match(r"\S", value):
+            raise ValueError(r"must validate the regular expression /\S/")
+        return value
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -46,6 +59,16 @@ class PatchSignInRuleByIDRequest(BaseModel):
         protected_namespaces=(),
     )
 
+
+    @model_serializer(mode="wrap")
+    def _phantasos_drop_empty_additional_properties(self, handler) -> Any:
+        """phantasos: omit an empty additional_properties bag from
+        model_dump()/model_dump_json(); non-empty bags are left untouched.
+        Respects exclude=/by_alias=/exclude_none=, so to_dict() is unchanged."""
+        data = handler(self)
+        if isinstance(data, dict) and data.get("additional_properties") == {}:
+            data.pop("additional_properties")
+        return data
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -102,8 +125,8 @@ class PatchSignInRuleByIDRequest(BaseModel):
         _obj = cls.model_validate({
             "name": obj.get("name"),
             "description": obj.get("description"),
-            "mode": obj.get("mode"),
             "scope": PatchScope.from_dict(obj["scope"]) if obj.get("scope") is not None else None,
+            "mode": obj.get("mode"),
             "action": obj.get("action")
         })
         # store additional fields in additional_properties

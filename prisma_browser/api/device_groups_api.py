@@ -104,6 +104,7 @@ class DeviceGroupsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '409': "SuspendUsers400Response",
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -174,6 +175,7 @@ class DeviceGroupsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '409': "SuspendUsers400Response",
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -244,6 +246,7 @@ class DeviceGroupsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '409': "SuspendUsers400Response",
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -387,6 +390,7 @@ class DeviceGroupsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -457,6 +461,7 @@ class DeviceGroupsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -527,6 +532,7 @@ class DeviceGroupsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -661,6 +667,7 @@ class DeviceGroupsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -735,6 +742,7 @@ class DeviceGroupsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -809,6 +817,7 @@ class DeviceGroupsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -983,6 +992,7 @@ class DeviceGroupsApi:
             '200': "ListDeviceGroups200Response",
             '400': "SuspendUsers400Response",
             '403': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1092,6 +1102,7 @@ class DeviceGroupsApi:
             '200': "ListDeviceGroups200Response",
             '400': "SuspendUsers400Response",
             '403': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1201,6 +1212,7 @@ class DeviceGroupsApi:
             '200': "ListDeviceGroups200Response",
             '400': "SuspendUsers400Response",
             '403': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1424,6 +1436,7 @@ class DeviceGroupsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1499,6 +1512,7 @@ class DeviceGroupsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1574,6 +1588,7 @@ class DeviceGroupsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1725,6 +1740,7 @@ class DeviceGroupsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1800,6 +1816,7 @@ class DeviceGroupsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1875,6 +1892,7 @@ class DeviceGroupsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(

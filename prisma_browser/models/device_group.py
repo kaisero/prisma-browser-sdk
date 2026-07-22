@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import model_serializer, BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from prisma_browser.models.attribute_object import AttributeObject
 from prisma_browser.models.device_group_platform import DeviceGroupPlatform
@@ -50,6 +50,16 @@ class DeviceGroup(BaseModel):
     )
 
 
+    @model_serializer(mode="wrap")
+    def _phantasos_drop_empty_additional_properties(self, handler) -> Any:
+        """phantasos: omit an empty additional_properties bag from
+        model_dump()/model_dump_json(); non-empty bags are left untouched.
+        Respects exclude=/by_alias=/exclude_none=, so to_dict() is unchanged."""
+        data = handler(self)
+        if isinstance(data, dict) and data.get("additional_properties") == {}:
+            data.pop("additional_properties")
+        return data
+
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
         return pprint.pformat(self.model_dump(by_alias=True))
@@ -72,9 +82,17 @@ class DeviceGroup(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
+        * OpenAPI `readOnly` fields are excluded.
         * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "created_by",
+            "updated_by",
+            "created_at",
+            "updated_at",
             "additional_properties",
         ])
 

@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from prisma_browser.models.allowed_printers_control_action import AllowedPrintersControlAction
@@ -30,8 +30,8 @@ class AllowedPrintersControl(BaseModel):
     Control which printers can be used when printing from Prisma Browser.
     """ # noqa: E501
     action: AllowedPrintersControlAction
-    allowed_printers: Optional[Annotated[List[Annotated[str, Field(min_length=1, strict=True, max_length=2048)]], Field(max_length=1000)]] = Field(default=None, description="Printer identifiers allowed when action is 'allowSpecific'.", alias="allowedPrinters")
-    allow_save_as_pdf: Optional[StrictBool] = Field(default=True, description="Whether to allow 'Save as PDF' when action is 'allowSpecific'. Dashboard shows this behind showSaveAsPdfCheckbox.", alias="allowSaveAsPdf")
+    allowed_printers: Optional[Annotated[List[Annotated[str, Field(min_length=1, strict=True, max_length=2048)]], Field(max_length=1000)]] = Field(default=None, description="List of allowed printer identifiers.", alias="allowedPrinters")
+    allow_save_as_pdf: Optional[StrictBool] = Field(default=True, description="Whether to allow 'Save as PDF' as a print option.", alias="allowSaveAsPdf")
     __properties: ClassVar[List[str]] = ["action", "allowedPrinters", "allowSaveAsPdf"]
 
     model_config = ConfigDict(

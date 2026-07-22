@@ -27,7 +27,6 @@ class FlushBrowserDataControlDataTypesInner(LenientStrEnum):
     """
     allowed enum values
     """
-    OPENTABS = 'openTabs'
     BROWSINGHISTORY = 'browsingHistory'
     DOWNLOADHISTORY = 'downloadHistory'
     COOKIESANDSITEDATA = 'cookiesAndSiteData'

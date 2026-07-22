@@ -18,8 +18,8 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictBool, StrictStr, field_validator
 from typing import Optional
 from typing_extensions import Annotated
-from prisma_browser.models.create_security_rule201_response import CreateSecurityRule201Response
 from prisma_browser.models.create_security_rule_request import CreateSecurityRuleRequest
+from prisma_browser.models.created_id_response import CreatedIdResponse
 from prisma_browser.models.get_sign_in_policy200_response import GetSignInPolicy200Response
 from prisma_browser.models.patch_positions_request import PatchPositionsRequest
 from prisma_browser.models.patch_security_rule_by_id200_response import PatchSecurityRuleByID200Response
@@ -67,10 +67,10 @@ class SecurityPolicyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> CreateSecurityRule201Response:
+    ) -> CreatedIdResponse:
         """Creates a new security policy rule.
 
-        Creates a new security rule in the policy. The rule is created in the draft configuration and must be published to become active.
+        Creates a new security rule in the policy. The rule is created in the draft configuration and must be published to become active. The controls object must contain at least one non-null control.
 
         :param create_security_rule_request: The name and mode fields are required. (required)
         :type create_security_rule_request: CreateSecurityRuleRequest
@@ -105,10 +105,11 @@ class SecurityPolicyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "CreateSecurityRule201Response",
+            '201': "CreatedIdResponse",
             '400': "ApiError",
             '401': "ApiError",
             '403': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -138,10 +139,10 @@ class SecurityPolicyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[CreateSecurityRule201Response]:
+    ) -> ApiResponse[CreatedIdResponse]:
         """Creates a new security policy rule.
 
-        Creates a new security rule in the policy. The rule is created in the draft configuration and must be published to become active.
+        Creates a new security rule in the policy. The rule is created in the draft configuration and must be published to become active. The controls object must contain at least one non-null control.
 
         :param create_security_rule_request: The name and mode fields are required. (required)
         :type create_security_rule_request: CreateSecurityRuleRequest
@@ -176,10 +177,11 @@ class SecurityPolicyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "CreateSecurityRule201Response",
+            '201': "CreatedIdResponse",
             '400': "ApiError",
             '401': "ApiError",
             '403': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -212,7 +214,7 @@ class SecurityPolicyApi:
     ) -> RESTResponseType:
         """Creates a new security policy rule.
 
-        Creates a new security rule in the policy. The rule is created in the draft configuration and must be published to become active.
+        Creates a new security rule in the policy. The rule is created in the draft configuration and must be published to become active. The controls object must contain at least one non-null control.
 
         :param create_security_rule_request: The name and mode fields are required. (required)
         :type create_security_rule_request: CreateSecurityRuleRequest
@@ -247,10 +249,11 @@ class SecurityPolicyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "CreateSecurityRule201Response",
+            '201': "CreatedIdResponse",
             '400': "ApiError",
             '401': "ApiError",
             '403': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -394,6 +397,7 @@ class SecurityPolicyApi:
             '201': "SectionDetailed",
             '400': "ApiError",
             '403': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -464,6 +468,7 @@ class SecurityPolicyApi:
             '201': "SectionDetailed",
             '400': "ApiError",
             '403': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -534,6 +539,7 @@ class SecurityPolicyApi:
             '201': "SectionDetailed",
             '400': "ApiError",
             '403': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -679,6 +685,7 @@ class SecurityPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -751,6 +758,7 @@ class SecurityPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -823,6 +831,7 @@ class SecurityPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -958,6 +967,7 @@ class SecurityPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1033,6 +1043,7 @@ class SecurityPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1108,6 +1119,7 @@ class SecurityPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1252,6 +1264,7 @@ class SecurityPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1331,6 +1344,7 @@ class SecurityPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1410,6 +1424,7 @@ class SecurityPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1557,6 +1572,7 @@ class SecurityPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1632,6 +1648,7 @@ class SecurityPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1707,6 +1724,7 @@ class SecurityPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1847,6 +1865,7 @@ class SecurityPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1922,6 +1941,7 @@ class SecurityPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1997,6 +2017,7 @@ class SecurityPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -2133,6 +2154,7 @@ class SecurityPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -2204,6 +2226,7 @@ class SecurityPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -2275,6 +2298,7 @@ class SecurityPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -2381,7 +2405,7 @@ class SecurityPolicyApi:
     ) -> PatchSecurityRuleByID200Response:
         """Partially update a Security policy rule. All fields are optional.
 
-        Partially update a Security rule object by its unique identifier. All fields are optional. 
+        Partially update a Security rule object by its unique identifier. All fields are optional. When provided, the controls object must not be empty, and the update cannot remove the rule's last remaining control. 
 
         :param id: The unique identifier of the rule to update. (required)
         :type id: str
@@ -2424,6 +2448,7 @@ class SecurityPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -2457,7 +2482,7 @@ class SecurityPolicyApi:
     ) -> ApiResponse[PatchSecurityRuleByID200Response]:
         """Partially update a Security policy rule. All fields are optional.
 
-        Partially update a Security rule object by its unique identifier. All fields are optional. 
+        Partially update a Security rule object by its unique identifier. All fields are optional. When provided, the controls object must not be empty, and the update cannot remove the rule's last remaining control. 
 
         :param id: The unique identifier of the rule to update. (required)
         :type id: str
@@ -2500,6 +2525,7 @@ class SecurityPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -2533,7 +2559,7 @@ class SecurityPolicyApi:
     ) -> RESTResponseType:
         """Partially update a Security policy rule. All fields are optional.
 
-        Partially update a Security rule object by its unique identifier. All fields are optional. 
+        Partially update a Security rule object by its unique identifier. All fields are optional. When provided, the controls object must not be empty, and the update cannot remove the rule's last remaining control. 
 
         :param id: The unique identifier of the rule to update. (required)
         :type id: str
@@ -2576,6 +2602,7 @@ class SecurityPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -2728,6 +2755,7 @@ class SecurityPolicyApi:
             '401': "SuspendUsers400Response",
             '403': "SuspendUsers400Response",
             '404': "SuspendUsers400Response",
+            '429': None,
             '500': "SuspendUsers400Response",
         }
         response_data = self.api_client.call_api(
@@ -2804,6 +2832,7 @@ class SecurityPolicyApi:
             '401': "SuspendUsers400Response",
             '403': "SuspendUsers400Response",
             '404': "SuspendUsers400Response",
+            '429': None,
             '500': "SuspendUsers400Response",
         }
         response_data = self.api_client.call_api(
@@ -2880,6 +2909,7 @@ class SecurityPolicyApi:
             '401': "SuspendUsers400Response",
             '403': "SuspendUsers400Response",
             '404': "SuspendUsers400Response",
+            '429': None,
             '500': "SuspendUsers400Response",
         }
         response_data = self.api_client.call_api(
@@ -3027,6 +3057,7 @@ class SecurityPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -3098,6 +3129,7 @@ class SecurityPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -3169,6 +3201,7 @@ class SecurityPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -3318,6 +3351,7 @@ class SecurityPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -3394,6 +3428,7 @@ class SecurityPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -3470,6 +3505,7 @@ class SecurityPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(

@@ -103,6 +103,7 @@ class PluginsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '409': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -177,6 +178,7 @@ class PluginsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '409': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -251,6 +253,7 @@ class PluginsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '409': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -397,6 +400,7 @@ class PluginsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -467,6 +471,7 @@ class PluginsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -537,6 +542,7 @@ class PluginsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -667,6 +673,7 @@ class PluginsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -737,6 +744,7 @@ class PluginsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -807,6 +815,7 @@ class PluginsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -932,6 +941,7 @@ class PluginsApi:
             '200': "ListApplicationPlugins200Response",
             '400': "SuspendUsers400Response",
             '403': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -997,6 +1007,7 @@ class PluginsApi:
             '200': "ListApplicationPlugins200Response",
             '400': "SuspendUsers400Response",
             '403': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1062,6 +1073,7 @@ class PluginsApi:
             '200': "ListApplicationPlugins200Response",
             '400': "SuspendUsers400Response",
             '403': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1193,6 +1205,7 @@ class PluginsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1267,6 +1280,7 @@ class PluginsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1341,6 +1355,7 @@ class PluginsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(

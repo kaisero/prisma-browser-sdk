@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from prisma_browser.models.force_https_control_action import ForceHttpsControlAction
@@ -31,8 +31,7 @@ class ForceHttpsControl(BaseModel):
     """ # noqa: E501
     action: ForceHttpsControlAction
     excluded_domains: Optional[Annotated[List[Annotated[str, Field(min_length=1, strict=True, max_length=2048)]], Field(max_length=1000)]] = Field(default=None, description="Domains excluded from forced HTTPS.", alias="excludedDomains")
-    block_bypass: Optional[StrictBool] = Field(default=None, description="When true, users cannot bypass the HTTPS enforcement warning page. Requires feature enablement per tenant.", alias="blockBypass")
-    __properties: ClassVar[List[str]] = ["action", "excludedDomains", "blockBypass"]
+    __properties: ClassVar[List[str]] = ["action", "excludedDomains"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -86,8 +85,7 @@ class ForceHttpsControl(BaseModel):
 
         _obj = cls.model_validate({
             "action": obj.get("action"),
-            "excludedDomains": obj.get("excludedDomains"),
-            "blockBypass": obj.get("blockBypass")
+            "excludedDomains": obj.get("excludedDomains")
         })
         return _obj
 

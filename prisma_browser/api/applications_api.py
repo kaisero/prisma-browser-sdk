@@ -15,14 +15,14 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictInt, StrictStr, field_validator
+from pydantic import Field, StrictBool, StrictInt, StrictStr, field_validator
 from typing import List, Optional
 from typing_extensions import Annotated
 from prisma_browser.models.application_item import ApplicationItem
 from prisma_browser.models.bulk_created_item import BulkCreatedItem
 from prisma_browser.models.bulk_delete_applications_request import BulkDeleteApplicationsRequest
-from prisma_browser.models.create_application201_response import CreateApplication201Response
 from prisma_browser.models.create_or_replace_app_input import CreateOrReplaceAppInput
+from prisma_browser.models.created_id_response import CreatedIdResponse
 from prisma_browser.models.list_application_categories200_response import ListApplicationCategories200Response
 from prisma_browser.models.list_applications200_response import ListApplications200Response
 from prisma_browser.models.list_applications_sort_parameter import ListApplicationsSortParameter
@@ -111,6 +111,7 @@ class ApplicationsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '409': "SuspendUsers400Response",
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -186,6 +187,7 @@ class ApplicationsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '409': "SuspendUsers400Response",
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -261,6 +263,7 @@ class ApplicationsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '409': "SuspendUsers400Response",
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -409,6 +412,7 @@ class ApplicationsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -480,6 +484,7 @@ class ApplicationsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -551,6 +556,7 @@ class ApplicationsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -654,7 +660,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> CreateApplication201Response:
+    ) -> CreatedIdResponse:
         """Creates an application
 
         Adds a new application of the specified type to the management console.  **URL Limit:** For custom, private, and non-web applications, there is a tenant-wide limit of 15,000 URLs combined. Exceeding this limit returns a 400 Bad Request error. 
@@ -695,10 +701,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "CreateApplication201Response",
+            '201': "CreatedIdResponse",
             '400': "SuspendUsers400Response",
             '403': None,
             '409': "SuspendUsers400Response",
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -729,7 +736,7 @@ class ApplicationsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[CreateApplication201Response]:
+    ) -> ApiResponse[CreatedIdResponse]:
         """Creates an application
 
         Adds a new application of the specified type to the management console.  **URL Limit:** For custom, private, and non-web applications, there is a tenant-wide limit of 15,000 URLs combined. Exceeding this limit returns a 400 Bad Request error. 
@@ -770,10 +777,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "CreateApplication201Response",
+            '201': "CreatedIdResponse",
             '400': "SuspendUsers400Response",
             '403': None,
             '409': "SuspendUsers400Response",
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -845,10 +853,11 @@ class ApplicationsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "CreateApplication201Response",
+            '201': "CreatedIdResponse",
             '400': "SuspendUsers400Response",
             '403': None,
             '409': "SuspendUsers400Response",
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -996,6 +1005,7 @@ class ApplicationsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1067,6 +1077,7 @@ class ApplicationsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1138,6 +1149,7 @@ class ApplicationsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1273,6 +1285,7 @@ class ApplicationsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1348,6 +1361,7 @@ class ApplicationsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1423,6 +1437,7 @@ class ApplicationsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1561,6 +1576,7 @@ class ApplicationsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1636,6 +1652,7 @@ class ApplicationsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1711,6 +1728,7 @@ class ApplicationsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1855,6 +1873,7 @@ class ApplicationsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1934,6 +1953,7 @@ class ApplicationsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -2013,6 +2033,7 @@ class ApplicationsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -2145,6 +2166,7 @@ class ApplicationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ListApplicationCategories200Response",
             '403': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -2209,6 +2231,7 @@ class ApplicationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ListApplicationCategories200Response",
             '403': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -2273,6 +2296,7 @@ class ApplicationsApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ListApplicationCategories200Response",
             '403': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -2349,6 +2373,7 @@ class ApplicationsApi:
         type: Optional[ListApplicationsTypeParameter] = None,
         name: Annotated[Optional[StrictStr], Field(description="Optional name to search in applications")] = None,
         url: Annotated[Optional[StrictStr], Field(description="Optional URL to search in applications")] = None,
+        include_catalog_attributes: Annotated[Optional[StrictBool], Field(description="Whether to include catalog_attributes in catalog application results")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="Maximum number of applications to return")] = None,
         cursor: Annotated[Optional[StrictStr], Field(description="An optional opaque string that defines from where to start listing")] = None,
         sort: Annotated[Optional[ListApplicationsSortParameter], Field(description="The field to sort by")] = None,
@@ -2377,6 +2402,8 @@ class ApplicationsApi:
         :type name: str
         :param url: Optional URL to search in applications
         :type url: str
+        :param include_catalog_attributes: Whether to include catalog_attributes in catalog application results
+        :type include_catalog_attributes: bool
         :param limit: Maximum number of applications to return
         :type limit: int
         :param cursor: An optional opaque string that defines from where to start listing
@@ -2413,6 +2440,7 @@ class ApplicationsApi:
             type=type,
             name=name,
             url=url,
+            include_catalog_attributes=include_catalog_attributes,
             limit=limit,
             cursor=cursor,
             sort=sort,
@@ -2429,6 +2457,7 @@ class ApplicationsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -2448,6 +2477,7 @@ class ApplicationsApi:
         type: Optional[ListApplicationsTypeParameter] = None,
         name: Annotated[Optional[StrictStr], Field(description="Optional name to search in applications")] = None,
         url: Annotated[Optional[StrictStr], Field(description="Optional URL to search in applications")] = None,
+        include_catalog_attributes: Annotated[Optional[StrictBool], Field(description="Whether to include catalog_attributes in catalog application results")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="Maximum number of applications to return")] = None,
         cursor: Annotated[Optional[StrictStr], Field(description="An optional opaque string that defines from where to start listing")] = None,
         sort: Annotated[Optional[ListApplicationsSortParameter], Field(description="The field to sort by")] = None,
@@ -2476,6 +2506,8 @@ class ApplicationsApi:
         :type name: str
         :param url: Optional URL to search in applications
         :type url: str
+        :param include_catalog_attributes: Whether to include catalog_attributes in catalog application results
+        :type include_catalog_attributes: bool
         :param limit: Maximum number of applications to return
         :type limit: int
         :param cursor: An optional opaque string that defines from where to start listing
@@ -2512,6 +2544,7 @@ class ApplicationsApi:
             type=type,
             name=name,
             url=url,
+            include_catalog_attributes=include_catalog_attributes,
             limit=limit,
             cursor=cursor,
             sort=sort,
@@ -2528,6 +2561,7 @@ class ApplicationsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -2547,6 +2581,7 @@ class ApplicationsApi:
         type: Optional[ListApplicationsTypeParameter] = None,
         name: Annotated[Optional[StrictStr], Field(description="Optional name to search in applications")] = None,
         url: Annotated[Optional[StrictStr], Field(description="Optional URL to search in applications")] = None,
+        include_catalog_attributes: Annotated[Optional[StrictBool], Field(description="Whether to include catalog_attributes in catalog application results")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="Maximum number of applications to return")] = None,
         cursor: Annotated[Optional[StrictStr], Field(description="An optional opaque string that defines from where to start listing")] = None,
         sort: Annotated[Optional[ListApplicationsSortParameter], Field(description="The field to sort by")] = None,
@@ -2575,6 +2610,8 @@ class ApplicationsApi:
         :type name: str
         :param url: Optional URL to search in applications
         :type url: str
+        :param include_catalog_attributes: Whether to include catalog_attributes in catalog application results
+        :type include_catalog_attributes: bool
         :param limit: Maximum number of applications to return
         :type limit: int
         :param cursor: An optional opaque string that defines from where to start listing
@@ -2611,6 +2648,7 @@ class ApplicationsApi:
             type=type,
             name=name,
             url=url,
+            include_catalog_attributes=include_catalog_attributes,
             limit=limit,
             cursor=cursor,
             sort=sort,
@@ -2627,6 +2665,7 @@ class ApplicationsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -2641,6 +2680,7 @@ class ApplicationsApi:
         type,
         name,
         url,
+        include_catalog_attributes,
         limit,
         cursor,
         sort,
@@ -2679,6 +2719,10 @@ class ApplicationsApi:
         if url is not None:
             
             _query_params.append(('url', url))
+            
+        if include_catalog_attributes is not None:
+            
+            _query_params.append(('includeCatalogAttributes', include_catalog_attributes))
             
         if limit is not None:
             
@@ -2743,6 +2787,7 @@ class ApplicationsApi:
         type: ListApplicationsTypeParameter,
         name: Annotated[Optional[StrictStr], Field(description="Optional name to search in applications")] = None,
         url: Annotated[Optional[StrictStr], Field(description="Optional URL to search in applications")] = None,
+        include_catalog_attributes: Annotated[Optional[StrictBool], Field(description="Whether to include catalog_attributes in catalog application results")] = None,
         configuration_version: Annotated[Optional[Annotated[str, Field(strict=True)]], Field(description="Configuration version to retrieve (draft, active, or version number)")] = None,
         cursor: Annotated[Optional[StrictStr], Field(description="An optional opaque string that defines from where to start listing")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="Maximum number of applications to return")] = None,
@@ -2771,6 +2816,8 @@ class ApplicationsApi:
         :type name: str
         :param url: Optional URL to search in applications
         :type url: str
+        :param include_catalog_attributes: Whether to include catalog_attributes in catalog application results
+        :type include_catalog_attributes: bool
         :param configuration_version: Configuration version to retrieve (draft, active, or version number)
         :type configuration_version: str
         :param cursor: An optional opaque string that defines from where to start listing
@@ -2807,6 +2854,7 @@ class ApplicationsApi:
             type=type,
             name=name,
             url=url,
+            include_catalog_attributes=include_catalog_attributes,
             configuration_version=configuration_version,
             cursor=cursor,
             limit=limit,
@@ -2822,6 +2870,7 @@ class ApplicationsApi:
             '200': "ListApplications200Response",
             '400': "SuspendUsers400Response",
             '403': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -2841,6 +2890,7 @@ class ApplicationsApi:
         type: ListApplicationsTypeParameter,
         name: Annotated[Optional[StrictStr], Field(description="Optional name to search in applications")] = None,
         url: Annotated[Optional[StrictStr], Field(description="Optional URL to search in applications")] = None,
+        include_catalog_attributes: Annotated[Optional[StrictBool], Field(description="Whether to include catalog_attributes in catalog application results")] = None,
         configuration_version: Annotated[Optional[Annotated[str, Field(strict=True)]], Field(description="Configuration version to retrieve (draft, active, or version number)")] = None,
         cursor: Annotated[Optional[StrictStr], Field(description="An optional opaque string that defines from where to start listing")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="Maximum number of applications to return")] = None,
@@ -2869,6 +2919,8 @@ class ApplicationsApi:
         :type name: str
         :param url: Optional URL to search in applications
         :type url: str
+        :param include_catalog_attributes: Whether to include catalog_attributes in catalog application results
+        :type include_catalog_attributes: bool
         :param configuration_version: Configuration version to retrieve (draft, active, or version number)
         :type configuration_version: str
         :param cursor: An optional opaque string that defines from where to start listing
@@ -2905,6 +2957,7 @@ class ApplicationsApi:
             type=type,
             name=name,
             url=url,
+            include_catalog_attributes=include_catalog_attributes,
             configuration_version=configuration_version,
             cursor=cursor,
             limit=limit,
@@ -2920,6 +2973,7 @@ class ApplicationsApi:
             '200': "ListApplications200Response",
             '400': "SuspendUsers400Response",
             '403': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -2939,6 +2993,7 @@ class ApplicationsApi:
         type: ListApplicationsTypeParameter,
         name: Annotated[Optional[StrictStr], Field(description="Optional name to search in applications")] = None,
         url: Annotated[Optional[StrictStr], Field(description="Optional URL to search in applications")] = None,
+        include_catalog_attributes: Annotated[Optional[StrictBool], Field(description="Whether to include catalog_attributes in catalog application results")] = None,
         configuration_version: Annotated[Optional[Annotated[str, Field(strict=True)]], Field(description="Configuration version to retrieve (draft, active, or version number)")] = None,
         cursor: Annotated[Optional[StrictStr], Field(description="An optional opaque string that defines from where to start listing")] = None,
         limit: Annotated[Optional[StrictInt], Field(description="Maximum number of applications to return")] = None,
@@ -2967,6 +3022,8 @@ class ApplicationsApi:
         :type name: str
         :param url: Optional URL to search in applications
         :type url: str
+        :param include_catalog_attributes: Whether to include catalog_attributes in catalog application results
+        :type include_catalog_attributes: bool
         :param configuration_version: Configuration version to retrieve (draft, active, or version number)
         :type configuration_version: str
         :param cursor: An optional opaque string that defines from where to start listing
@@ -3003,6 +3060,7 @@ class ApplicationsApi:
             type=type,
             name=name,
             url=url,
+            include_catalog_attributes=include_catalog_attributes,
             configuration_version=configuration_version,
             cursor=cursor,
             limit=limit,
@@ -3018,6 +3076,7 @@ class ApplicationsApi:
             '200': "ListApplications200Response",
             '400': "SuspendUsers400Response",
             '403': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -3032,6 +3091,7 @@ class ApplicationsApi:
         type,
         name,
         url,
+        include_catalog_attributes,
         configuration_version,
         cursor,
         limit,
@@ -3068,6 +3128,10 @@ class ApplicationsApi:
         if url is not None:
             
             _query_params.append(('url', url))
+            
+        if include_catalog_attributes is not None:
+            
+            _query_params.append(('includeCatalogAttributes', include_catalog_attributes))
             
         if configuration_version is not None:
             
@@ -3193,6 +3257,7 @@ class ApplicationsApi:
             '403': None,
             '404': None,
             '409': "SuspendUsers400Response",
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -3273,6 +3338,7 @@ class ApplicationsApi:
             '403': None,
             '404': None,
             '409': "SuspendUsers400Response",
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -3353,6 +3419,7 @@ class ApplicationsApi:
             '403': None,
             '404': None,
             '409': "SuspendUsers400Response",
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(

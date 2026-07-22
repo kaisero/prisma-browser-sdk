@@ -30,7 +30,7 @@ class BrowserSelfProtectionControl(BaseModel):
     Enables a kernel-mode driver that provides advanced runtime security for the browser. This protection is available only on Windows and applies only to devices where Prisma Browser is installed with admin permissions and the user is running the browser as admin.
     """ # noqa: E501
     action: BrowserSelfProtectionControlAction
-    enforcement: Optional[BrowserSelfProtectionControlEnforcement] = BrowserSelfProtectionControlEnforcement.NONE
+    enforcement: Optional[BrowserSelfProtectionControlEnforcement] = None
     __properties: ClassVar[List[str]] = ["action", "enforcement"]
 
     model_config = ConfigDict(
@@ -85,7 +85,7 @@ class BrowserSelfProtectionControl(BaseModel):
 
         _obj = cls.model_validate({
             "action": obj.get("action"),
-            "enforcement": obj.get("enforcement") if obj.get("enforcement") is not None else BrowserSelfProtectionControlEnforcement.NONE
+            "enforcement": obj.get("enforcement")
         })
         return _obj
 

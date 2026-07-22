@@ -21,7 +21,7 @@ from typing_extensions import Self
 
 class ConcurrentNumberOfDevicesControlAction(LenientStrEnum):
     """
-    Whether to limit the number of concurrent devices.
+    Whether to limit the number of concurrent devices. When 'unlimited', no other fields may be set.
     """
 
     """

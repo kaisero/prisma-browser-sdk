@@ -105,6 +105,7 @@ class UsersApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': "SuspendUsers400Response",
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -176,6 +177,7 @@ class UsersApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': "SuspendUsers400Response",
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -247,6 +249,7 @@ class UsersApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': "SuspendUsers400Response",
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -388,6 +391,7 @@ class UsersApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "User",
             '404': None,
+            '429': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -455,6 +459,7 @@ class UsersApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "User",
             '404': None,
+            '429': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -522,6 +527,7 @@ class UsersApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "User",
             '404': None,
+            '429': None,
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -689,6 +695,7 @@ class UsersApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ListUsers200Response",
             '400': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -797,6 +804,7 @@ class UsersApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ListUsers200Response",
             '400': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -905,6 +913,7 @@ class UsersApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "ListUsers200Response",
             '400': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1106,6 +1115,7 @@ class UsersApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': "SuspendUsers400Response",
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1177,6 +1187,7 @@ class UsersApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': "SuspendUsers400Response",
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1248,6 +1259,7 @@ class UsersApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': "SuspendUsers400Response",
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1392,6 +1404,7 @@ class UsersApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': "SuspendUsers400Response",
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1463,6 +1476,7 @@ class UsersApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': "SuspendUsers400Response",
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1534,6 +1548,7 @@ class UsersApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': "SuspendUsers400Response",
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(

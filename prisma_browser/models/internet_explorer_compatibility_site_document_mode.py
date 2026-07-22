@@ -21,7 +21,7 @@ from typing_extensions import Self
 
 class InternetExplorerCompatibilitySiteDocumentMode(LenientStrEnum):
     """
-    InternetExplorerCompatibilitySiteDocumentMode
+    IE document mode for rendering the site
     """
 
     """

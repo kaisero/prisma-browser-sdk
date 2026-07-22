@@ -28,13 +28,13 @@ from pydantic_core import to_jsonable_python
 
 class ConcurrentNumberOfDevicesControl(BaseModel):
     """
-    Control the maximum number of devices users can be logged into at the same time.
+    Control the maximum number of devices users can be logged into at the same time. Which fields are required or allowed depends on action and limitMode (see individual field descriptions).
     """ # noqa: E501
     action: ConcurrentNumberOfDevicesControlAction
     limit_mode: Optional[ConcurrentNumberOfDevicesControlLimitMode] = Field(default=None, alias="limitMode")
-    max_total_devices: Optional[Annotated[int, Field(le=5, strict=True, ge=1)]] = Field(default=None, description="Maximum total number of devices a user can be logged into across all device types.", alias="maxTotalDevices")
-    max_desktop_devices: Optional[Annotated[int, Field(le=5, strict=True, ge=0)]] = Field(default=None, description="Maximum number of desktop devices (macOS/Windows/Linux). Use null for no limit, or 0 to block desktop devices entirely.", alias="maxDesktopDevices")
-    max_mobile_devices: Optional[Annotated[int, Field(le=5, strict=True, ge=0)]] = Field(default=None, description="Maximum number of mobile devices (iOS/Android). Use null for no limit, or 0 to block mobile devices entirely.", alias="maxMobileDevices")
+    max_total_devices: Optional[Annotated[int, Field(le=5, strict=True, ge=1)]] = Field(default=None, description="Maximum total number of devices a user can be logged into across all device types. Required when limitMode is 'byTotalDevices'. Must not be set when limitMode is 'byDeviceType' or when action is 'unlimited'.", alias="maxTotalDevices")
+    max_desktop_devices: Optional[Annotated[int, Field(le=5, strict=True, ge=0)]] = Field(default=None, description="Maximum number of desktop devices (macOS/Windows/Linux). Use null for no limit, or 0 to block desktop devices entirely. Required when limitMode is 'byDeviceType'. Must not be set when limitMode is 'byTotalDevices' or when action is 'unlimited'. maxDesktopDevices and maxMobileDevices cannot both be null, and cannot both be 0.", alias="maxDesktopDevices")
+    max_mobile_devices: Optional[Annotated[int, Field(le=5, strict=True, ge=0)]] = Field(default=None, description="Maximum number of mobile devices (iOS/Android). Use null for no limit, or 0 to block mobile devices entirely. Required when limitMode is 'byDeviceType'. Must not be set when limitMode is 'byTotalDevices' or when action is 'unlimited'. maxDesktopDevices and maxMobileDevices cannot both be null, and cannot both be 0.", alias="maxMobileDevices")
     __properties: ClassVar[List[str]] = ["action", "limitMode", "maxTotalDevices", "maxDesktopDevices", "maxMobileDevices"]
 
     model_config = ConfigDict(

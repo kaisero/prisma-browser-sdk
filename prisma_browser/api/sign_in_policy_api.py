@@ -19,6 +19,7 @@ from pydantic import Field, StrictBool, StrictStr, field_validator
 from typing import Optional
 from typing_extensions import Annotated
 from prisma_browser.models.create_sign_in_rule_request import CreateSignInRuleRequest
+from prisma_browser.models.created_id_response import CreatedIdResponse
 from prisma_browser.models.get_sign_in_policy200_response import GetSignInPolicy200Response
 from prisma_browser.models.patch_sign_in_rule_by_id200_response import PatchSignInRuleByID200Response
 from prisma_browser.models.patch_sign_in_rule_by_id_request import PatchSignInRuleByIDRequest
@@ -65,7 +66,7 @@ class SignInPolicyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> PatchSignInRuleByID200Response:
+    ) -> CreatedIdResponse:
         """Creates a new sign-in rule in the policy.
 
         Creates a new sign-in rule in the policy. The rule is created in the draft configuration and must be published to become active.
@@ -103,10 +104,11 @@ class SignInPolicyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "PatchSignInRuleByID200Response",
+            '201': "CreatedIdResponse",
             '400': "ApiError",
             '401': "ApiError",
             '403': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -136,7 +138,7 @@ class SignInPolicyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[PatchSignInRuleByID200Response]:
+    ) -> ApiResponse[CreatedIdResponse]:
         """Creates a new sign-in rule in the policy.
 
         Creates a new sign-in rule in the policy. The rule is created in the draft configuration and must be published to become active.
@@ -174,10 +176,11 @@ class SignInPolicyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "PatchSignInRuleByID200Response",
+            '201': "CreatedIdResponse",
             '400': "ApiError",
             '401': "ApiError",
             '403': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -245,10 +248,11 @@ class SignInPolicyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "PatchSignInRuleByID200Response",
+            '201': "CreatedIdResponse",
             '400': "ApiError",
             '401': "ApiError",
             '403': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -392,6 +396,7 @@ class SignInPolicyApi:
             '201': "SectionDetailed",
             '400': "ApiError",
             '403': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -462,6 +467,7 @@ class SignInPolicyApi:
             '201': "SectionDetailed",
             '400': "ApiError",
             '403': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -532,6 +538,7 @@ class SignInPolicyApi:
             '201': "SectionDetailed",
             '400': "ApiError",
             '403': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -677,6 +684,7 @@ class SignInPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -749,6 +757,7 @@ class SignInPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -821,6 +830,7 @@ class SignInPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -956,6 +966,7 @@ class SignInPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1031,6 +1042,7 @@ class SignInPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1106,6 +1118,7 @@ class SignInPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1250,6 +1263,7 @@ class SignInPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1329,6 +1343,7 @@ class SignInPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1408,6 +1423,7 @@ class SignInPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1556,6 +1572,7 @@ class SignInPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1632,6 +1649,7 @@ class SignInPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1708,6 +1726,7 @@ class SignInPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1848,6 +1867,7 @@ class SignInPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1923,6 +1943,7 @@ class SignInPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1998,6 +2019,7 @@ class SignInPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -2139,6 +2161,7 @@ class SignInPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -2215,6 +2238,7 @@ class SignInPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -2291,6 +2315,7 @@ class SignInPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -2443,6 +2468,7 @@ class SignInPolicyApi:
             '401': "SuspendUsers400Response",
             '403': "SuspendUsers400Response",
             '404': "SuspendUsers400Response",
+            '429': None,
             '500': "SuspendUsers400Response",
         }
         response_data = self.api_client.call_api(
@@ -2519,6 +2545,7 @@ class SignInPolicyApi:
             '401': "SuspendUsers400Response",
             '403': "SuspendUsers400Response",
             '404': "SuspendUsers400Response",
+            '429': None,
             '500': "SuspendUsers400Response",
         }
         response_data = self.api_client.call_api(
@@ -2595,6 +2622,7 @@ class SignInPolicyApi:
             '401': "SuspendUsers400Response",
             '403': "SuspendUsers400Response",
             '404': "SuspendUsers400Response",
+            '429': None,
             '500': "SuspendUsers400Response",
         }
         response_data = self.api_client.call_api(
@@ -2742,6 +2770,7 @@ class SignInPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -2813,6 +2842,7 @@ class SignInPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -2884,6 +2914,7 @@ class SignInPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -3033,6 +3064,7 @@ class SignInPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -3109,6 +3141,7 @@ class SignInPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -3185,6 +3218,7 @@ class SignInPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(

@@ -17,10 +17,15 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import model_serializer, BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from prisma_browser.models.access_and_data_applications import AccessAndDataApplications
+from prisma_browser.models.access_and_data_data_controls import AccessAndDataDataControls
+from prisma_browser.models.access_and_data_login_controls_input import AccessAndDataLoginControlsInput
 from prisma_browser.models.access_and_data_rule_detailed_metadata import AccessAndDataRuleDetailedMetadata
 from prisma_browser.models.access_and_data_rule_mode import AccessAndDataRuleMode
+from prisma_browser.models.access_and_data_tracking import AccessAndDataTracking
+from prisma_browser.models.access_input import AccessInput
 from prisma_browser.models.get_scope import GetScope
 from prisma_browser.models.section_ref import SectionRef
 from typing import Optional, Set
@@ -38,9 +43,14 @@ class AccessAndDataRuleDetailed(BaseModel):
     description: Optional[StrictStr] = Field(default=None, description="Detailed explanation of the rule's purpose")
     mode: AccessAndDataRuleMode
     scope: GetScope
+    applications: AccessAndDataApplications
+    access: AccessInput
+    login_controls: Optional[AccessAndDataLoginControlsInput] = Field(default=None, alias="loginControls")
+    data_controls: Optional[AccessAndDataDataControls] = Field(default=None, alias="dataControls")
+    tracking: AccessAndDataTracking
     metadata: AccessAndDataRuleDetailedMetadata
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["id", "name", "priority", "section", "description", "mode", "scope", "metadata"]
+    __properties: ClassVar[List[str]] = ["id", "name", "priority", "section", "description", "mode", "scope", "applications", "access", "loginControls", "dataControls", "tracking", "metadata"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -49,6 +59,16 @@ class AccessAndDataRuleDetailed(BaseModel):
         protected_namespaces=(),
     )
 
+
+    @model_serializer(mode="wrap")
+    def _phantasos_drop_empty_additional_properties(self, handler) -> Any:
+        """phantasos: omit an empty additional_properties bag from
+        model_dump()/model_dump_json(); non-empty bags are left untouched.
+        Respects exclude=/by_alias=/exclude_none=, so to_dict() is unchanged."""
+        data = handler(self)
+        if isinstance(data, dict) and data.get("additional_properties") == {}:
+            data.pop("additional_properties")
+        return data
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -89,6 +109,21 @@ class AccessAndDataRuleDetailed(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of scope
         if self.scope:
             _dict['scope'] = self.scope.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of applications
+        if self.applications:
+            _dict['applications'] = self.applications.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of access
+        if self.access:
+            _dict['access'] = self.access.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of login_controls
+        if self.login_controls:
+            _dict['loginControls'] = self.login_controls.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of data_controls
+        if self.data_controls:
+            _dict['dataControls'] = self.data_controls.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of tracking
+        if self.tracking:
+            _dict['tracking'] = self.tracking.to_dict()
         # override the default output from pydantic by calling `to_dict()` of metadata
         if self.metadata:
             _dict['metadata'] = self.metadata.to_dict()
@@ -121,6 +156,11 @@ class AccessAndDataRuleDetailed(BaseModel):
             "description": obj.get("description"),
             "mode": obj.get("mode"),
             "scope": GetScope.from_dict(obj["scope"]) if obj.get("scope") is not None else None,
+            "applications": AccessAndDataApplications.from_dict(obj["applications"]) if obj.get("applications") is not None else None,
+            "access": AccessInput.from_dict(obj["access"]) if obj.get("access") is not None else None,
+            "loginControls": AccessAndDataLoginControlsInput.from_dict(obj["loginControls"]) if obj.get("loginControls") is not None else None,
+            "dataControls": AccessAndDataDataControls.from_dict(obj["dataControls"]) if obj.get("dataControls") is not None else None,
+            "tracking": AccessAndDataTracking.from_dict(obj["tracking"]) if obj.get("tracking") is not None else None,
             "metadata": AccessAndDataRuleDetailedMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None
         })
         # store additional fields in additional_properties

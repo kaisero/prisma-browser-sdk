@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 from typing import Any, ClassVar, Dict, List
 from typing_extensions import Annotated
 from prisma_browser.models.external_application_launch_exception_action import ExternalApplicationLaunchExceptionAction
@@ -31,8 +31,18 @@ class ExternalApplicationLaunchException(BaseModel):
     """ # noqa: E501
     name: Annotated[str, Field(min_length=1, strict=True, max_length=256)]
     action: ExternalApplicationLaunchExceptionAction
-    protocol_schemes: Annotated[List[Annotated[str, Field(min_length=1, strict=True, max_length=2048)]], Field(max_length=256)] = Field(alias="protocolSchemes")
+    protocol_schemes: Annotated[List[Annotated[str, Field(min_length=1, strict=True, max_length=2048)]], Field(min_length=1, max_length=256)] = Field(alias="protocolSchemes")
     __properties: ClassVar[List[str]] = ["name", "action", "protocolSchemes"]
+
+    @field_validator('name')
+    def name_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if not isinstance(value, str):
+            value = str(value)
+
+        if not re.match(r"\S", value):
+            raise ValueError(r"must validate the regular expression /\S/")
+        return value
 
     model_config = ConfigDict(
         validate_by_name=True,

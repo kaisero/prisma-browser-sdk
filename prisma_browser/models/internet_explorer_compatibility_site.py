@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 from typing import Any, ClassVar, Dict, Optional
 from typing_extensions import Annotated
 from prisma_browser.models.internet_explorer_compatibility_site_document_mode import InternetExplorerCompatibilitySiteDocumentMode
@@ -29,9 +29,19 @@ class InternetExplorerCompatibilitySite(BaseModel):
     """
     InternetExplorerCompatibilitySite
     """ # noqa: E501
-    url: Annotated[str, Field(min_length=1, strict=True, max_length=2048)]
+    url: Annotated[str, Field(min_length=1, strict=True, max_length=2048)] = Field(description="URL match pattern in Chrome format: scheme://host[:port]/path. Allowed schemes: *, http, https. Host wildcards only as * or *. prefix. Port must be * or 0–65535. Path required (at least /*).")
     document_mode: Optional[InternetExplorerCompatibilitySiteDocumentMode] = Field(default=None, alias="documentMode")
     __properties: ClassVar[List[str]] = ["url", "documentMode"]
+
+    @field_validator('url')
+    def url_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if not isinstance(value, str):
+            value = str(value)
+
+        if not re.match(r"\S", value):
+            raise ValueError(r"must validate the regular expression /\S/")
+        return value
 
     model_config = ConfigDict(
         validate_by_name=True,

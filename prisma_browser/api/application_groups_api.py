@@ -19,8 +19,8 @@ from pydantic import Field, StrictInt, StrictStr, field_validator
 from typing import Optional
 from typing_extensions import Annotated
 from prisma_browser.models.application_group import ApplicationGroup
-from prisma_browser.models.create_application201_response import CreateApplication201Response
 from prisma_browser.models.create_or_replace_app_group_input import CreateOrReplaceAppGroupInput
+from prisma_browser.models.created_id_response import CreatedIdResponse
 from prisma_browser.models.list_application_groups200_response import ListApplicationGroups200Response
 from prisma_browser.models.list_application_groups_sort_parameter import ListApplicationGroupsSortParameter
 from prisma_browser.models.order import Order
@@ -61,7 +61,7 @@ class ApplicationGroupsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> CreateApplication201Response:
+    ) -> CreatedIdResponse:
         """Creates an application group
 
         Defines a new group and associates it with a list of application IDs.
@@ -99,10 +99,11 @@ class ApplicationGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "CreateApplication201Response",
+            '201': "CreatedIdResponse",
             '400': "SuspendUsers400Response",
             '403': None,
             '409': "SuspendUsers400Response",
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -132,7 +133,7 @@ class ApplicationGroupsApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[CreateApplication201Response]:
+    ) -> ApiResponse[CreatedIdResponse]:
         """Creates an application group
 
         Defines a new group and associates it with a list of application IDs.
@@ -170,10 +171,11 @@ class ApplicationGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "CreateApplication201Response",
+            '201': "CreatedIdResponse",
             '400': "SuspendUsers400Response",
             '403': None,
             '409': "SuspendUsers400Response",
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -241,10 +243,11 @@ class ApplicationGroupsApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "CreateApplication201Response",
+            '201': "CreatedIdResponse",
             '400': "SuspendUsers400Response",
             '403': None,
             '409': "SuspendUsers400Response",
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -389,6 +392,7 @@ class ApplicationGroupsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -460,6 +464,7 @@ class ApplicationGroupsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -531,6 +536,7 @@ class ApplicationGroupsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -666,6 +672,7 @@ class ApplicationGroupsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -741,6 +748,7 @@ class ApplicationGroupsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -816,6 +824,7 @@ class ApplicationGroupsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -971,6 +980,7 @@ class ApplicationGroupsApi:
             '200': "ListApplicationGroups200Response",
             '400': "SuspendUsers400Response",
             '403': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1061,6 +1071,7 @@ class ApplicationGroupsApi:
             '200': "ListApplicationGroups200Response",
             '400': "SuspendUsers400Response",
             '403': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1151,6 +1162,7 @@ class ApplicationGroupsApi:
             '200': "ListApplicationGroups200Response",
             '400': "SuspendUsers400Response",
             '403': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1314,6 +1326,7 @@ class ApplicationGroupsApi:
             '403': None,
             '404': None,
             '409': "SuspendUsers400Response",
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1390,6 +1403,7 @@ class ApplicationGroupsApi:
             '403': None,
             '404': None,
             '409': "SuspendUsers400Response",
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1466,6 +1480,7 @@ class ApplicationGroupsApi:
             '403': None,
             '404': None,
             '409': "SuspendUsers400Response",
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(

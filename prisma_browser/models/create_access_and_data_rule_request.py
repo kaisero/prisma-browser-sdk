@@ -17,9 +17,14 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import model_serializer, BaseModel, ConfigDict, Field, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
+from prisma_browser.models.access_and_data_data_controls import AccessAndDataDataControls
+from prisma_browser.models.access_and_data_login_controls_input import AccessAndDataLoginControlsInput
+from prisma_browser.models.access_and_data_post_applications import AccessAndDataPostApplications
+from prisma_browser.models.access_and_data_tracking import AccessAndDataTracking
+from prisma_browser.models.access_input import AccessInput
 from prisma_browser.models.post_scope import PostScope
 from prisma_browser.models.rule_mode import RuleMode
 from typing import Optional, Set
@@ -32,10 +37,25 @@ class CreateAccessAndDataRuleRequest(BaseModel):
     """ # noqa: E501
     name: Annotated[str, Field(min_length=1, strict=True, max_length=300)] = Field(description="The name or title of the rule.")
     description: Optional[Annotated[str, Field(strict=True, max_length=300)]] = Field(default=None, description="The detailed description of the rule.")
-    mode: RuleMode
     scope: Optional[PostScope] = None
+    mode: RuleMode
+    applications: AccessAndDataPostApplications
+    data_controls: Optional[AccessAndDataDataControls] = Field(default=None, alias="dataControls")
+    access: AccessInput
+    login_controls: Optional[AccessAndDataLoginControlsInput] = Field(default=None, alias="loginControls")
+    tracking: AccessAndDataTracking
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["name", "description", "mode", "scope"]
+    __properties: ClassVar[List[str]] = ["name", "description", "scope", "mode", "applications", "dataControls", "access", "loginControls", "tracking"]
+
+    @field_validator('name')
+    def name_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if not isinstance(value, str):
+            value = str(value)
+
+        if not re.match(r"\S", value):
+            raise ValueError(r"must validate the regular expression /\S/")
+        return value
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -44,6 +64,16 @@ class CreateAccessAndDataRuleRequest(BaseModel):
         protected_namespaces=(),
     )
 
+
+    @model_serializer(mode="wrap")
+    def _phantasos_drop_empty_additional_properties(self, handler) -> Any:
+        """phantasos: omit an empty additional_properties bag from
+        model_dump()/model_dump_json(); non-empty bags are left untouched.
+        Respects exclude=/by_alias=/exclude_none=, so to_dict() is unchanged."""
+        data = handler(self)
+        if isinstance(data, dict) and data.get("additional_properties") == {}:
+            data.pop("additional_properties")
+        return data
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -81,6 +111,21 @@ class CreateAccessAndDataRuleRequest(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of scope
         if self.scope:
             _dict['scope'] = self.scope.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of applications
+        if self.applications:
+            _dict['applications'] = self.applications.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of data_controls
+        if self.data_controls:
+            _dict['dataControls'] = self.data_controls.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of access
+        if self.access:
+            _dict['access'] = self.access.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of login_controls
+        if self.login_controls:
+            _dict['loginControls'] = self.login_controls.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of tracking
+        if self.tracking:
+            _dict['tracking'] = self.tracking.to_dict()
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
             for _key, _value in self.additional_properties.items():
@@ -100,8 +145,13 @@ class CreateAccessAndDataRuleRequest(BaseModel):
         _obj = cls.model_validate({
             "name": obj.get("name"),
             "description": obj.get("description"),
+            "scope": PostScope.from_dict(obj["scope"]) if obj.get("scope") is not None else None,
             "mode": obj.get("mode"),
-            "scope": PostScope.from_dict(obj["scope"]) if obj.get("scope") is not None else None
+            "applications": AccessAndDataPostApplications.from_dict(obj["applications"]) if obj.get("applications") is not None else None,
+            "dataControls": AccessAndDataDataControls.from_dict(obj["dataControls"]) if obj.get("dataControls") is not None else None,
+            "access": AccessInput.from_dict(obj["access"]) if obj.get("access") is not None else None,
+            "loginControls": AccessAndDataLoginControlsInput.from_dict(obj["loginControls"]) if obj.get("loginControls") is not None else None,
+            "tracking": AccessAndDataTracking.from_dict(obj["tracking"]) if obj.get("tracking") is not None else None
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

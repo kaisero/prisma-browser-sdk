@@ -20,7 +20,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
-from prisma_browser.models.allowed_or_blocked_extension_entry import AllowedOrBlockedExtensionEntry
+from prisma_browser.models.allowed_or_blocked_extensions_control_extensions_inner import AllowedOrBlockedExtensionsControlExtensionsInner
 from prisma_browser.models.allowed_or_blocked_extensions_control_mode import AllowedOrBlockedExtensionsControlMode
 from prisma_browser.models.allowed_or_blocked_extensions_control_risk_level import AllowedOrBlockedExtensionsControlRiskLevel
 from typing import Optional, Set
@@ -32,7 +32,7 @@ class AllowedOrBlockedExtensionsControl(BaseModel):
     Control browser extension availability to users based on extension ID or risk score.
     """ # noqa: E501
     mode: AllowedOrBlockedExtensionsControlMode
-    extensions: Optional[Annotated[List[AllowedOrBlockedExtensionEntry], Field(max_length=1000)]] = Field(default=None, description="List of Chrome extension entries to allow or block.")
+    extensions: Optional[Annotated[List[AllowedOrBlockedExtensionsControlExtensionsInner], Field(max_length=1000)]] = Field(default=None, description="List of Chrome extension entries to allow or block.")
     risk_level: Optional[AllowedOrBlockedExtensionsControlRiskLevel] = Field(default=None, alias="riskLevel")
     __properties: ClassVar[List[str]] = ["mode", "extensions", "riskLevel"]
 
@@ -95,7 +95,7 @@ class AllowedOrBlockedExtensionsControl(BaseModel):
 
         _obj = cls.model_validate({
             "mode": obj.get("mode"),
-            "extensions": [AllowedOrBlockedExtensionEntry.from_dict(_item) for _item in obj["extensions"]] if obj.get("extensions") is not None else None,
+            "extensions": [AllowedOrBlockedExtensionsControlExtensionsInner.from_dict(_item) for _item in obj["extensions"]] if obj.get("extensions") is not None else None,
             "riskLevel": obj.get("riskLevel")
         })
         return _obj

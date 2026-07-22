@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, field_validator
 from typing import Any, ClassVar, Dict, Optional
 from typing_extensions import Annotated
 from prisma_browser.models.authentication_factor_identity_provider_control_identity_provider_profile_source import AuthenticationFactorIdentityProviderControlIdentityProviderProfileSource
@@ -34,6 +34,19 @@ class AuthenticationFactorIdentityProviderControlIdentityProvider(BaseModel):
     incognito: Optional[StrictBool] = Field(default=True, description="Whether to perform IdP authentication in an isolated browser session.")
     force_reauthentication: Optional[StrictBool] = Field(default=True, description="Whether to force re-authentication with the IdP rather than using an existing session.", alias="forceReauthentication")
     __properties: ClassVar[List[str]] = ["profileSource", "authProfileId", "incognito", "forceReauthentication"]
+
+    @field_validator('auth_profile_id')
+    def auth_profile_id_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not isinstance(value, str):
+            value = str(value)
+
+        if not re.match(r"\S", value):
+            raise ValueError(r"must validate the regular expression /\S/")
+        return value
 
     model_config = ConfigDict(
         validate_by_name=True,

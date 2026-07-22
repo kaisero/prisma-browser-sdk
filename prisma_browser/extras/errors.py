@@ -38,6 +38,11 @@ def error_message(exc: ApiException) -> str:
         except ValueError:
             return body.strip()[:500]
     if isinstance(body, dict):
+        for _w in ['errorResponse', 'error_response']:
+            inner = body.get(_w)
+            if isinstance(inner, dict):
+                body = inner
+                break
         err = body.get("error")
         if isinstance(err, dict) and isinstance(err.get("message"), str):
             code = err.get("code")

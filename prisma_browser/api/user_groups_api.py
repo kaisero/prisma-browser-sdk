@@ -100,6 +100,7 @@ class UserGroupsApi:
             '201': "CreateUserGroup201Response",
             '400': "SuspendUsers400Response",
             '403': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -169,6 +170,7 @@ class UserGroupsApi:
             '201': "CreateUserGroup201Response",
             '400': "SuspendUsers400Response",
             '403': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -238,6 +240,7 @@ class UserGroupsApi:
             '201': "CreateUserGroup201Response",
             '400': "SuspendUsers400Response",
             '403': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -381,6 +384,7 @@ class UserGroupsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -451,6 +455,7 @@ class UserGroupsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -521,6 +526,7 @@ class UserGroupsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -651,6 +657,7 @@ class UserGroupsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -721,6 +728,7 @@ class UserGroupsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -791,6 +799,7 @@ class UserGroupsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -924,6 +933,7 @@ class UserGroupsApi:
             '200': "ListUserGroups200Response",
             '400': "SuspendUsers400Response",
             '403': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -997,6 +1007,7 @@ class UserGroupsApi:
             '200': "ListUserGroups200Response",
             '400': "SuspendUsers400Response",
             '403': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1070,6 +1081,7 @@ class UserGroupsApi:
             '200': "ListUserGroups200Response",
             '400': "SuspendUsers400Response",
             '403': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1211,6 +1223,7 @@ class UserGroupsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1285,6 +1298,7 @@ class UserGroupsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(
@@ -1359,6 +1373,7 @@ class UserGroupsApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '404': None,
+            '429': None,
             '500': None,
         }
         response_data = self.api_client.call_api(

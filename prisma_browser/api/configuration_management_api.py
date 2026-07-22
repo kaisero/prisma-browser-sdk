@@ -93,6 +93,7 @@ class ConfigurationManagementApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '409': "PublishDraftConfiguration409Response",
+            '429': None,
             '500': None,
             '501': "PublishDraftConfiguration501Response",
         }
@@ -164,6 +165,7 @@ class ConfigurationManagementApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '409': "PublishDraftConfiguration409Response",
+            '429': None,
             '500': None,
             '501': "PublishDraftConfiguration501Response",
         }
@@ -235,6 +237,7 @@ class ConfigurationManagementApi:
             '400': "SuspendUsers400Response",
             '403': None,
             '409': "PublishDraftConfiguration409Response",
+            '429': None,
             '500': None,
             '501': "PublishDraftConfiguration501Response",
         }

@@ -21,10 +21,12 @@ __all__ = [
     "AccessAndDataPolicyApi",
     "ApplicationGroupsApi",
     "ApplicationsApi",
+    "AssetsApi",
     "ConfigurationManagementApi",
     "CustomizationPolicyApi",
     "DeviceGroupsApi",
     "DevicesApi",
+    "IntegrationsApi",
     "PluginsApi",
     "SecurityPolicyApi",
     "SignInPolicyApi",
@@ -40,28 +42,75 @@ __all__ = [
     "ApiKeyError",
     "ApiAttributeError",
     "ApiException",
+    "AccessAndDataApplications",
+    "AccessAndDataApplicationsApplicationGroups",
+    "AccessAndDataApplicationsLocalDesktop",
+    "AccessAndDataApplicationsLocalDesktopAccessMode",
+    "AccessAndDataApplicationsNonWeb",
+    "AccessAndDataApplicationsNonWebAccessMode",
+    "AccessAndDataApplicationsPrivate",
+    "AccessAndDataApplicationsPrivateAccessMode",
+    "AccessAndDataApplicationsPrivateSpecific",
+    "AccessAndDataApplicationsSaas",
+    "AccessAndDataApplicationsSaasAccessMode",
+    "AccessAndDataApplicationsSaasSpecific",
+    "AccessAndDataDataControls",
+    "AccessAndDataEvidenceType",
+    "AccessAndDataLogLevel",
+    "AccessAndDataLoginControlsInput",
+    "AccessAndDataPatchApplications",
+    "AccessAndDataPatchApplicationsApplicationGroups",
+    "AccessAndDataPatchApplicationsApplicationGroupsAccessMode",
+    "AccessAndDataPatchApplicationsApplicationGroupsSpecific",
+    "AccessAndDataPatchApplicationsLocalDesktop",
+    "AccessAndDataPatchApplicationsNonWeb",
+    "AccessAndDataPatchApplicationsPrivate",
+    "AccessAndDataPatchApplicationsPrivateSpecific",
+    "AccessAndDataPatchApplicationsSaas",
+    "AccessAndDataPatchApplicationsSaasSpecific",
+    "AccessAndDataPatchTracking",
+    "AccessAndDataPostApplications",
+    "AccessAndDataPostApplicationsApplicationGroups",
+    "AccessAndDataPostApplicationsApplicationGroupsSpecific",
+    "AccessAndDataPostApplicationsLocalDesktop",
+    "AccessAndDataPostApplicationsNonWeb",
+    "AccessAndDataPostApplicationsPrivate",
+    "AccessAndDataPostApplicationsPrivateSpecific",
+    "AccessAndDataPostApplicationsSaas",
+    "AccessAndDataPostApplicationsSaasSpecific",
     "AccessAndDataRuleDetailed",
     "AccessAndDataRuleDetailedMetadata",
     "AccessAndDataRuleMode",
+    "AccessAndDataTracking",
+    "AccessInput",
+    "AccessInputAction",
+    "AccessInputAddressBarLabel",
+    "AccessUserPrompt",
+    "AccessUserPromptDurationMinutes",
+    "AccessUserPromptMode",
     "AddRemoveApps",
     "AddRemoveCidrs",
     "AddRemoveUrls",
+    "AdminMessagesControl",
+    "AdminMessagesControlMessagesInner",
+    "AdminMessagesControlMode",
     "AllowBlockControl",
     "AllowBlockControlAction",
-    "AllowedOrBlockedExtensionEntry",
     "AllowedOrBlockedExtensionsControl",
+    "AllowedOrBlockedExtensionsControlExtensionsInner",
     "AllowedOrBlockedExtensionsControlMode",
     "AllowedOrBlockedExtensionsControlRiskLevel",
     "AllowedPrintersControl",
     "AllowedPrintersControlAction",
     "ApiError",
     "ApiErrorError",
-    "ApiErrorErrorCode",
-    "ApiErrorErrorDetailsInner",
     "ApplicationGroup",
     "ApplicationGroupApplicationsInner",
     "ApplicationGroupApplicationsInnerType",
+    "ApplicationGroupRef",
     "ApplicationItem",
+    "ApplicationRef",
+    "ApplicationRefAppType",
     "ApplicationTypeInput",
     "AttributeObject",
     "AttributeObjectBrowserBrand",
@@ -107,6 +156,23 @@ __all__ = [
     "AuthenticationFactorPinCodeControlPinCodeMaxFailedAttempts",
     "AuthenticationServerAllowlistControl",
     "AuthenticationServerAllowlistControlAction",
+    "AutoLaunchExternalApplicationsControl",
+    "AutoLaunchExternalApplicationsControlAction",
+    "AutoLaunchExternalApplicationsControlRulesInner",
+    "AutomaticClientCertificateSelectionControl",
+    "AutomaticClientCertificateSelectionControlAction",
+    "AutomaticClientCertificateSelectionControlRulesInner",
+    "AutomaticClientCertificateSelectionControlRulesInnerFilter",
+    "AutomaticClientCertificateSelectionControlRulesInnerFilterIssuer",
+    "AutomaticClientCertificateSelectionControlRulesInnerFilterSubject",
+    "AwsTenantCondition",
+    "AwsTenantConditionRegionsInner",
+    "BackgroundImageControl",
+    "BackgroundImageControlBackgroundImageFilterMode",
+    "BackgroundImageControlBackgroundImageFilterOpacity",
+    "BackgroundImageControlMode",
+    "BackgroundImageControlPageMode",
+    "BackgroundImageUploadResponse",
     "BaseApplication",
     "BaseApplicationInput",
     "BaseApplicationWithUrls",
@@ -114,13 +180,19 @@ __all__ = [
     "BasePatchRuleRequest",
     "BasePolicyItem",
     "BasePostRuleRequest",
+    "BeforeFileAction",
     "BlockExtensionsByPermissionsControl",
     "BlockExtensionsByPermissionsControlAction",
     "BlockExtensionsByPermissionsControlBlockedPermissionsInner",
+    "BrandColorControl",
+    "BrandColorControlMode",
     "BrowserBrand",
     "BrowserBrandDetails",
     "BrowserHistoryControl",
     "BrowserHistoryControlAction",
+    "BrowserIconControl",
+    "BrowserIconControlMode",
+    "BrowserIconUploadResponse",
     "BrowserLockControl",
     "BrowserLockControlAction",
     "BrowserLockControlIdleTimeoutMinutes",
@@ -136,35 +208,82 @@ __all__ = [
     "CatalogApplicationAllOfType",
     "CatalogAttributes",
     "CertificateDN",
+    "ClipboardControl",
+    "ClipboardControlOptions",
+    "ClipboardControlOptionsAction",
+    "CloudStorageProvider",
+    "CloudStorageProviderStatus",
+    "CloudStorageProviderType",
+    "CompanyLogoControl",
+    "CompanyLogoControlMode",
+    "CompanyLogoUploadResponse",
+    "CompanyNameControl",
+    "CompanyNameControlMode",
     "ConcurrentNumberOfDevicesControl",
     "ConcurrentNumberOfDevicesControlAction",
     "ConcurrentNumberOfDevicesControlLimitMode",
     "CookiesControl",
     "CookiesControlAction",
     "CreateAccessAndDataRuleRequest",
-    "CreateApplication201Response",
     "CreateApplicationPlugin201Response",
+    "CreateCloudStorageProviderRequest",
     "CreateCustomizationRuleRequest",
     "CreateDeviceGroup201Response",
+    "CreateGoogleProviderRequest",
+    "CreateMicrosoftProviderRequest",
     "CreateOrReplaceAppGroupInput",
     "CreateOrReplaceAppInput",
-    "CreateSecurityRule201Response",
     "CreateSecurityRuleRequest",
     "CreateSignInRuleRequest",
     "CreateUserGroup201Response",
     "CreateUserGroupRequest",
+    "CreatedIdResponse",
     "CrowdstrikeZTAPosture",
     "CsZtaBasicScoreLevel",
     "CsZtaScore",
     "CustomApplication",
     "CustomApplicationAllOfType",
     "CustomApplicationInput",
+    "CustomBrowserPreferencesControl",
+    "CustomBrowserPreferencesControlMode",
+    "CustomDialogText",
+    "CustomDialogTextExternalLink",
+    "CustomHttpHeaderControl",
+    "CustomHttpHeaderControlMode",
+    "CustomLabel",
+    "CustomLabelColor",
+    "CustomLabelIcon",
+    "CustomNoticeControl",
+    "CustomNoticeControlAction",
+    "CustomNoticeControlFrequency",
     "CustomPatchApplicationInput",
+    "CustomProfilePreferencesControl",
+    "CustomProfilePreferencesControlMode",
+    "CustomTextsControl",
+    "CustomTextsControlMode",
+    "CustomTextsControlOverridesInner",
+    "CustomTextsControlOverridesInnerLink",
     "CustomTypeInput",
+    "CustomizationControls",
     "CustomizationRuleDetailed",
+    "DefaultAiProviderControl",
+    "DefaultAiProviderControlAction",
+    "DefaultAiProviderControlProvider",
+    "DefaultSearchProviderControl",
+    "DefaultSearchProviderControlAction",
+    "DefaultSearchProviderControlProvider",
     "DefinitionUpdateTimeframe",
     "DeleteApplicationPlugin200Response",
+    "DeleteCloudStorageProviderById409Response",
     "DeleteUserGroup200Response",
+    "DeploymentUpgradeControl",
+    "DeploymentUpgradeControlForceRollback",
+    "DeploymentUpgradeControlGracePeriodHours",
+    "DeploymentUpgradeControlMajorReleaseDelayDays",
+    "DeploymentUpgradeControlMode",
+    "DeploymentUpgradeControlPatchDelayDays",
+    "DeploymentUpgradeControlPinnedVersions",
+    "DeploymentUpgradeControlVersionUpdateDelayDays",
     "Device",
     "DeviceArchiveResponse",
     "DeviceBrowserBrand",
@@ -200,6 +319,7 @@ __all__ = [
     "DeviceType",
     "DiskEncryptionProduct",
     "DiskEncryptionVendorName",
+    "DlpProfileRef",
     "DnsOverHttpsControl",
     "DnsOverHttpsControlAction",
     "DnsOverHttpsControlFailureMode",
@@ -208,10 +328,31 @@ __all__ = [
     "EnableDisableControlAction",
     "EnhancedTrackingProtectionControl",
     "EnhancedTrackingProtectionControlAction",
+    "EnterpriseBrowserPoliciesControl",
+    "EnterpriseBrowserPoliciesControlMode",
+    "EnterpriseBrowserPoliciesControlPoliciesInner",
     "EppVendorName",
     "ErrorResponse",
+    "ExtensionForceInstallControl",
+    "ExtensionForceInstallControlExtensionsInner",
+    "ExtensionForceInstallControlExtensionsInnerSource",
     "ExternalApplicationLaunchException",
     "ExternalApplicationLaunchExceptionAction",
+    "FileDownloadControl",
+    "FileDownloadControlAction",
+    "FileDownloadControlApplyOn",
+    "FileProtectionControl",
+    "FileSha256Filter",
+    "FileSha256FilterOperator",
+    "FileSizeLimit",
+    "FileSizeLimitOperator",
+    "FileSizeLimitUnit",
+    "FileTypeFilter",
+    "FileTypeFilterOperator",
+    "FileTypeFilterPredefinedTypesInner",
+    "FileUploadControl",
+    "FileUploadControlAction",
+    "FileUploadControlApplyOn",
     "FirewallProduct",
     "FirewallVendorName",
     "FlushBrowserDataControl",
@@ -220,6 +361,10 @@ __all__ = [
     "FlushBrowserDataControlTrigger",
     "ForceHttpsControl",
     "ForceHttpsControlAction",
+    "FormLoginControl",
+    "FormLoginControlAction",
+    "FormSubmissionControl",
+    "FormSubmissionControlAction",
     "GetScope",
     "GetScopeDeviceGroups",
     "GetScopeLocations",
@@ -227,6 +372,17 @@ __all__ = [
     "GetScopePublicIps",
     "GetScopeUsers",
     "GetSignInPolicy200Response",
+    "GoogleProperties",
+    "GoogleTenantCondition",
+    "HomePageControl",
+    "HomePageControlMode",
+    "IdentityProviderSyncedShortcutsControl",
+    "IdentityProviderSyncedShortcutsControlAction",
+    "IncognitoControl",
+    "IncognitoControlAction",
+    "InternalNetworkDetectionControl",
+    "InternalNetworkDetectionControlAction",
+    "InternalNetworkDetectionControlHostDetection",
     "InternetExplorerCompatibilityModeControl",
     "InternetExplorerCompatibilitySite",
     "InternetExplorerCompatibilitySiteDocumentMode",
@@ -253,6 +409,7 @@ __all__ = [
     "ListApplications200Response",
     "ListApplicationsSortParameter",
     "ListApplicationsTypeParameter",
+    "ListCloudStorageProviders200Response",
     "ListDeviceGroups200Response",
     "ListDeviceGroupsSortParameter",
     "ListDevices200Response",
@@ -264,6 +421,8 @@ __all__ = [
     "ListUserRequestsSortParameter",
     "ListUsers200Response",
     "ListUsersSortParameter",
+    "LivePageScanningControl",
+    "LivePageScanningControlAction",
     "LocalDesktopAppExecutableInput",
     "LocalDesktopAppExecutablesInput",
     "LocalDesktopApplication",
@@ -281,10 +440,19 @@ __all__ = [
     "MacOSRunningProcessMetadata",
     "MacOSVersion",
     "MacOSVersionAttribute",
+    "MaliciousFileProtectionControl",
+    "MaliciousFileProtectionControlAction",
+    "MaliciousFileProtectionControlDetectionAction",
+    "MaliciousFileProtectionControlProvider",
+    "ManagedShortcutsControl",
+    "ManagedShortcutsControlMode",
+    "ManagedShortcutsControlShortcutsInner",
     "ManagementSystemType",
     "Metadata",
     "MetadataConfigurationVersion",
     "MetadataConfigurationVersionStatus",
+    "Microsoft365TenantCondition",
+    "MicrosoftProperties",
     "MobileDeviceManagementSystem",
     "MobileDeviceManagementSystemName",
     "MobileDeviceType",
@@ -293,6 +461,8 @@ __all__ = [
     "MobileOsVersion",
     "NativeMessagingHostsControl",
     "NativeMessagingHostsControlAction",
+    "NewTabPageControl",
+    "NewTabPageControlPageType",
     "NonWebApplication",
     "NonWebApplicationAllOfType",
     "NonWebApplicationInput",
@@ -300,14 +470,36 @@ __all__ = [
     "NonwebTypeInput",
     "NotificationsControl",
     "NotificationsControlAction",
+    "OnBrowserStartupControl",
+    "OnBrowserStartupControlAction",
+    "OnboardingWizardControl",
+    "OnboardingWizardControlSteps",
+    "OnboardingWizardControlStepsCustomize",
+    "OnboardingWizardControlStepsExtension",
+    "OnboardingWizardControlStepsImport",
+    "OnboardingWizardControlStepsMobile",
+    "OnboardingWizardControlStepsPasswordManager",
+    "OnboardingWizardControlStepsPolicy",
+    "OnboardingWizardControlStepsRestriction",
+    "OnboardingWizardControlStepsWelcome",
+    "OnboardingWizardControlStepsWelcomeLink",
+    "OpenAITenantCondition",
+    "OpenInPrismaBrowser",
     "OpenLinksInExternalAppsControl",
     "OpenLinksInExternalAppsControlAction",
     "OpenLinksInExternalAppsControlAllowedAppsInner",
     "Order",
     "OsPasswordComplexity",
+    "OverrideDurationMinutes",
+    "PacFileUploadResponse",
     "PageInfo",
+    "PageTranslationGoogleTranslateControl",
+    "PageTranslationGoogleTranslateControlAction",
     "PagesWithInsecureContentControl",
     "PagesWithInsecureContentControlAction",
+    "PasskeyLoginControl",
+    "PasskeyLoginControlAction",
+    "PatchAccessAndDataRuleByIDRequest",
     "PatchAppGroupInput",
     "PatchAppGroupInputApplications",
     "PatchAppInput",
@@ -364,28 +556,53 @@ __all__ = [
     "PostScopePrivateIps",
     "PostScopePublicIps",
     "PostScopeUsers",
+    "PrintControl",
+    "PrintControlAction",
     "PrivateApplication",
     "PrivateApplicationAllOfType",
     "PrivateApplicationInput",
     "PrivatePatchApplicationInput",
     "PrivateTypeInput",
+    "ProfileSyncControl",
+    "ProfileSyncControlMode",
+    "ProfileSyncControlSyncMode",
+    "ProfileSyncControlSyncTypesInner",
+    "ProxyAutoConfigurationPacFileControl",
+    "ProxyAutoConfigurationPacFileControlMode",
     "PublishDraftConfiguration409Response",
     "PublishDraftConfiguration501Response",
     "PublishDraftConfigurationRequest",
     "RegKey",
     "RegValue",
     "RegistryValueType",
+    "ReplaceGoogleProviderRequest",
+    "ReplaceMicrosoftProviderRequest",
     "RequestAction",
     "RequestActionAction",
     "RequestActionAdminBypassTimeframe",
+    "RequestDesktopMobileSiteControl",
+    "RequestDesktopMobileSiteControlRulesInner",
+    "RequestDesktopMobileSiteControlRulesInnerMode",
     "RequestError",
     "ResponseMetadata",
     "RestrictExtensionHostPermissionsControl",
     "RestrictExtensionHostPermissionsControlAction",
+    "RestrictedRuleMode",
     "RevokeRequestAction",
     "RuleMode",
     "RuleSummary",
     "RuleSummaryAllOfType",
+    "SanitizingContentControl",
+    "SanitizingContentControlAction",
+    "ScreenshotControl",
+    "ScreenshotControlAction",
+    "SearchEngineContentFilteringControl",
+    "SearchEngineContentFilteringControlAction",
+    "SearchEngineContentFilteringControlEnginesInner",
+    "SearchEngineContentFilteringControlEnginesInnerName",
+    "SearchSuggestionsControl",
+    "SearchSuggestionsControlAction",
+    "SebApiV1IntegrationsCloudStorageProviderIdPutRequest",
     "Section",
     "SectionAllOfType",
     "SectionDetailed",
@@ -403,10 +620,18 @@ __all__ = [
     "SignInRuleDetailed",
     "SignInRuleDetailedAction",
     "SignInRuleDetailedActionAction",
+    "SlackTenantCondition",
+    "SuggestDefaultBrowserControl",
+    "SuggestDefaultBrowserControlAction",
     "SuspendUsers400Response",
     "SystemIntegrityPosture",
     "SystemIntegrityPostureServices",
     "SystemIntegrityPostureStatus",
+    "TenantConditions",
+    "ThemeColorControl",
+    "ThemeColorControlMode",
+    "TrafficFlowControl",
+    "TrafficFlowControlAction",
     "TrustedCertificateAuthoritiesControl",
     "TrustedCertificateAuthoritiesControlMode",
     "TrustedCertificateEntry",
@@ -421,10 +646,14 @@ __all__ = [
     "UpdateUserGroupRequestUsersInnerAction",
     "UrlInput",
     "User",
+    "UserAgentControl",
+    "UserAgentControlMode",
     "UserForceReauthResponse",
     "UserGroup",
     "UserGroupProvider",
     "UserGroupRef",
+    "UserPrompt",
+    "UserPromptMode",
     "UserProvider",
     "UserRef",
     "UserRequest",
@@ -433,8 +662,21 @@ __all__ = [
     "UserStatus",
     "UserStatusChangeRequest",
     "UserSuspendResponse",
+    "WatermarkControl",
+    "WatermarkControlAction",
+    "WatermarkControlSettings",
+    "WatermarkControlSettingsDensityLevel",
+    "WatermarkControlSettingsLogoColor",
+    "WatermarkControlSettingsRotationDegrees",
+    "WebClassification",
     "WebRtcControl",
     "WebRtcControlAction",
+    "WebUserInteractionControl",
+    "WebUserInteractionControlAction",
+    "WebUserInteractionControlSelectorsInner",
+    "WebpageDataMaskingControl",
+    "WebpageDataMaskingControlMaskType",
+    "WebpageDataMaskingControlVisibleCharacterCount",
     "WinFileExistenceMetadata",
     "WinRunningProcessMetadata",
     "WindowsEdition",
@@ -446,10 +688,12 @@ __all__ = [
 from prisma_browser.api.access_and_data_policy_api import AccessAndDataPolicyApi as AccessAndDataPolicyApi
 from prisma_browser.api.application_groups_api import ApplicationGroupsApi as ApplicationGroupsApi
 from prisma_browser.api.applications_api import ApplicationsApi as ApplicationsApi
+from prisma_browser.api.assets_api import AssetsApi as AssetsApi
 from prisma_browser.api.configuration_management_api import ConfigurationManagementApi as ConfigurationManagementApi
 from prisma_browser.api.customization_policy_api import CustomizationPolicyApi as CustomizationPolicyApi
 from prisma_browser.api.device_groups_api import DeviceGroupsApi as DeviceGroupsApi
 from prisma_browser.api.devices_api import DevicesApi as DevicesApi
+from prisma_browser.api.integrations_api import IntegrationsApi as IntegrationsApi
 from prisma_browser.api.plugins_api import PluginsApi as PluginsApi
 from prisma_browser.api.security_policy_api import SecurityPolicyApi as SecurityPolicyApi
 from prisma_browser.api.sign_in_policy_api import SignInPolicyApi as SignInPolicyApi
@@ -469,28 +713,75 @@ from prisma_browser.exceptions import ApiAttributeError as ApiAttributeError
 from prisma_browser.exceptions import ApiException as ApiException
 
 # import models into sdk package
+from prisma_browser.models.access_and_data_applications import AccessAndDataApplications as AccessAndDataApplications
+from prisma_browser.models.access_and_data_applications_application_groups import AccessAndDataApplicationsApplicationGroups as AccessAndDataApplicationsApplicationGroups
+from prisma_browser.models.access_and_data_applications_local_desktop import AccessAndDataApplicationsLocalDesktop as AccessAndDataApplicationsLocalDesktop
+from prisma_browser.models.access_and_data_applications_local_desktop_access_mode import AccessAndDataApplicationsLocalDesktopAccessMode as AccessAndDataApplicationsLocalDesktopAccessMode
+from prisma_browser.models.access_and_data_applications_non_web import AccessAndDataApplicationsNonWeb as AccessAndDataApplicationsNonWeb
+from prisma_browser.models.access_and_data_applications_non_web_access_mode import AccessAndDataApplicationsNonWebAccessMode as AccessAndDataApplicationsNonWebAccessMode
+from prisma_browser.models.access_and_data_applications_private import AccessAndDataApplicationsPrivate as AccessAndDataApplicationsPrivate
+from prisma_browser.models.access_and_data_applications_private_access_mode import AccessAndDataApplicationsPrivateAccessMode as AccessAndDataApplicationsPrivateAccessMode
+from prisma_browser.models.access_and_data_applications_private_specific import AccessAndDataApplicationsPrivateSpecific as AccessAndDataApplicationsPrivateSpecific
+from prisma_browser.models.access_and_data_applications_saas import AccessAndDataApplicationsSaas as AccessAndDataApplicationsSaas
+from prisma_browser.models.access_and_data_applications_saas_access_mode import AccessAndDataApplicationsSaasAccessMode as AccessAndDataApplicationsSaasAccessMode
+from prisma_browser.models.access_and_data_applications_saas_specific import AccessAndDataApplicationsSaasSpecific as AccessAndDataApplicationsSaasSpecific
+from prisma_browser.models.access_and_data_data_controls import AccessAndDataDataControls as AccessAndDataDataControls
+from prisma_browser.models.access_and_data_evidence_type import AccessAndDataEvidenceType as AccessAndDataEvidenceType
+from prisma_browser.models.access_and_data_log_level import AccessAndDataLogLevel as AccessAndDataLogLevel
+from prisma_browser.models.access_and_data_login_controls_input import AccessAndDataLoginControlsInput as AccessAndDataLoginControlsInput
+from prisma_browser.models.access_and_data_patch_applications import AccessAndDataPatchApplications as AccessAndDataPatchApplications
+from prisma_browser.models.access_and_data_patch_applications_application_groups import AccessAndDataPatchApplicationsApplicationGroups as AccessAndDataPatchApplicationsApplicationGroups
+from prisma_browser.models.access_and_data_patch_applications_application_groups_access_mode import AccessAndDataPatchApplicationsApplicationGroupsAccessMode as AccessAndDataPatchApplicationsApplicationGroupsAccessMode
+from prisma_browser.models.access_and_data_patch_applications_application_groups_specific import AccessAndDataPatchApplicationsApplicationGroupsSpecific as AccessAndDataPatchApplicationsApplicationGroupsSpecific
+from prisma_browser.models.access_and_data_patch_applications_local_desktop import AccessAndDataPatchApplicationsLocalDesktop as AccessAndDataPatchApplicationsLocalDesktop
+from prisma_browser.models.access_and_data_patch_applications_non_web import AccessAndDataPatchApplicationsNonWeb as AccessAndDataPatchApplicationsNonWeb
+from prisma_browser.models.access_and_data_patch_applications_private import AccessAndDataPatchApplicationsPrivate as AccessAndDataPatchApplicationsPrivate
+from prisma_browser.models.access_and_data_patch_applications_private_specific import AccessAndDataPatchApplicationsPrivateSpecific as AccessAndDataPatchApplicationsPrivateSpecific
+from prisma_browser.models.access_and_data_patch_applications_saas import AccessAndDataPatchApplicationsSaas as AccessAndDataPatchApplicationsSaas
+from prisma_browser.models.access_and_data_patch_applications_saas_specific import AccessAndDataPatchApplicationsSaasSpecific as AccessAndDataPatchApplicationsSaasSpecific
+from prisma_browser.models.access_and_data_patch_tracking import AccessAndDataPatchTracking as AccessAndDataPatchTracking
+from prisma_browser.models.access_and_data_post_applications import AccessAndDataPostApplications as AccessAndDataPostApplications
+from prisma_browser.models.access_and_data_post_applications_application_groups import AccessAndDataPostApplicationsApplicationGroups as AccessAndDataPostApplicationsApplicationGroups
+from prisma_browser.models.access_and_data_post_applications_application_groups_specific import AccessAndDataPostApplicationsApplicationGroupsSpecific as AccessAndDataPostApplicationsApplicationGroupsSpecific
+from prisma_browser.models.access_and_data_post_applications_local_desktop import AccessAndDataPostApplicationsLocalDesktop as AccessAndDataPostApplicationsLocalDesktop
+from prisma_browser.models.access_and_data_post_applications_non_web import AccessAndDataPostApplicationsNonWeb as AccessAndDataPostApplicationsNonWeb
+from prisma_browser.models.access_and_data_post_applications_private import AccessAndDataPostApplicationsPrivate as AccessAndDataPostApplicationsPrivate
+from prisma_browser.models.access_and_data_post_applications_private_specific import AccessAndDataPostApplicationsPrivateSpecific as AccessAndDataPostApplicationsPrivateSpecific
+from prisma_browser.models.access_and_data_post_applications_saas import AccessAndDataPostApplicationsSaas as AccessAndDataPostApplicationsSaas
+from prisma_browser.models.access_and_data_post_applications_saas_specific import AccessAndDataPostApplicationsSaasSpecific as AccessAndDataPostApplicationsSaasSpecific
 from prisma_browser.models.access_and_data_rule_detailed import AccessAndDataRuleDetailed as AccessAndDataRuleDetailed
 from prisma_browser.models.access_and_data_rule_detailed_metadata import AccessAndDataRuleDetailedMetadata as AccessAndDataRuleDetailedMetadata
 from prisma_browser.models.access_and_data_rule_mode import AccessAndDataRuleMode as AccessAndDataRuleMode
+from prisma_browser.models.access_and_data_tracking import AccessAndDataTracking as AccessAndDataTracking
+from prisma_browser.models.access_input import AccessInput as AccessInput
+from prisma_browser.models.access_input_action import AccessInputAction as AccessInputAction
+from prisma_browser.models.access_input_address_bar_label import AccessInputAddressBarLabel as AccessInputAddressBarLabel
+from prisma_browser.models.access_user_prompt import AccessUserPrompt as AccessUserPrompt
+from prisma_browser.models.access_user_prompt_duration_minutes import AccessUserPromptDurationMinutes as AccessUserPromptDurationMinutes
+from prisma_browser.models.access_user_prompt_mode import AccessUserPromptMode as AccessUserPromptMode
 from prisma_browser.models.add_remove_apps import AddRemoveApps as AddRemoveApps
 from prisma_browser.models.add_remove_cidrs import AddRemoveCidrs as AddRemoveCidrs
 from prisma_browser.models.add_remove_urls import AddRemoveUrls as AddRemoveUrls
+from prisma_browser.models.admin_messages_control import AdminMessagesControl as AdminMessagesControl
+from prisma_browser.models.admin_messages_control_messages_inner import AdminMessagesControlMessagesInner as AdminMessagesControlMessagesInner
+from prisma_browser.models.admin_messages_control_mode import AdminMessagesControlMode as AdminMessagesControlMode
 from prisma_browser.models.allow_block_control import AllowBlockControl as AllowBlockControl
 from prisma_browser.models.allow_block_control_action import AllowBlockControlAction as AllowBlockControlAction
-from prisma_browser.models.allowed_or_blocked_extension_entry import AllowedOrBlockedExtensionEntry as AllowedOrBlockedExtensionEntry
 from prisma_browser.models.allowed_or_blocked_extensions_control import AllowedOrBlockedExtensionsControl as AllowedOrBlockedExtensionsControl
+from prisma_browser.models.allowed_or_blocked_extensions_control_extensions_inner import AllowedOrBlockedExtensionsControlExtensionsInner as AllowedOrBlockedExtensionsControlExtensionsInner
 from prisma_browser.models.allowed_or_blocked_extensions_control_mode import AllowedOrBlockedExtensionsControlMode as AllowedOrBlockedExtensionsControlMode
 from prisma_browser.models.allowed_or_blocked_extensions_control_risk_level import AllowedOrBlockedExtensionsControlRiskLevel as AllowedOrBlockedExtensionsControlRiskLevel
 from prisma_browser.models.allowed_printers_control import AllowedPrintersControl as AllowedPrintersControl
 from prisma_browser.models.allowed_printers_control_action import AllowedPrintersControlAction as AllowedPrintersControlAction
 from prisma_browser.models.api_error import ApiError as ApiError
 from prisma_browser.models.api_error_error import ApiErrorError as ApiErrorError
-from prisma_browser.models.api_error_error_code import ApiErrorErrorCode as ApiErrorErrorCode
-from prisma_browser.models.api_error_error_details_inner import ApiErrorErrorDetailsInner as ApiErrorErrorDetailsInner
 from prisma_browser.models.application_group import ApplicationGroup as ApplicationGroup
 from prisma_browser.models.application_group_applications_inner import ApplicationGroupApplicationsInner as ApplicationGroupApplicationsInner
 from prisma_browser.models.application_group_applications_inner_type import ApplicationGroupApplicationsInnerType as ApplicationGroupApplicationsInnerType
+from prisma_browser.models.application_group_ref import ApplicationGroupRef as ApplicationGroupRef
 from prisma_browser.models.application_item import ApplicationItem as ApplicationItem
+from prisma_browser.models.application_ref import ApplicationRef as ApplicationRef
+from prisma_browser.models.application_ref_app_type import ApplicationRefAppType as ApplicationRefAppType
 from prisma_browser.models.application_type_input import ApplicationTypeInput as ApplicationTypeInput
 from prisma_browser.models.attribute_object import AttributeObject as AttributeObject
 from prisma_browser.models.attribute_object_browser_brand import AttributeObjectBrowserBrand as AttributeObjectBrowserBrand
@@ -536,6 +827,23 @@ from prisma_browser.models.authentication_factor_pin_code_control_pin_code impor
 from prisma_browser.models.authentication_factor_pin_code_control_pin_code_max_failed_attempts import AuthenticationFactorPinCodeControlPinCodeMaxFailedAttempts as AuthenticationFactorPinCodeControlPinCodeMaxFailedAttempts
 from prisma_browser.models.authentication_server_allowlist_control import AuthenticationServerAllowlistControl as AuthenticationServerAllowlistControl
 from prisma_browser.models.authentication_server_allowlist_control_action import AuthenticationServerAllowlistControlAction as AuthenticationServerAllowlistControlAction
+from prisma_browser.models.auto_launch_external_applications_control import AutoLaunchExternalApplicationsControl as AutoLaunchExternalApplicationsControl
+from prisma_browser.models.auto_launch_external_applications_control_action import AutoLaunchExternalApplicationsControlAction as AutoLaunchExternalApplicationsControlAction
+from prisma_browser.models.auto_launch_external_applications_control_rules_inner import AutoLaunchExternalApplicationsControlRulesInner as AutoLaunchExternalApplicationsControlRulesInner
+from prisma_browser.models.automatic_client_certificate_selection_control import AutomaticClientCertificateSelectionControl as AutomaticClientCertificateSelectionControl
+from prisma_browser.models.automatic_client_certificate_selection_control_action import AutomaticClientCertificateSelectionControlAction as AutomaticClientCertificateSelectionControlAction
+from prisma_browser.models.automatic_client_certificate_selection_control_rules_inner import AutomaticClientCertificateSelectionControlRulesInner as AutomaticClientCertificateSelectionControlRulesInner
+from prisma_browser.models.automatic_client_certificate_selection_control_rules_inner_filter import AutomaticClientCertificateSelectionControlRulesInnerFilter as AutomaticClientCertificateSelectionControlRulesInnerFilter
+from prisma_browser.models.automatic_client_certificate_selection_control_rules_inner_filter_issuer import AutomaticClientCertificateSelectionControlRulesInnerFilterIssuer as AutomaticClientCertificateSelectionControlRulesInnerFilterIssuer
+from prisma_browser.models.automatic_client_certificate_selection_control_rules_inner_filter_subject import AutomaticClientCertificateSelectionControlRulesInnerFilterSubject as AutomaticClientCertificateSelectionControlRulesInnerFilterSubject
+from prisma_browser.models.aws_tenant_condition import AwsTenantCondition as AwsTenantCondition
+from prisma_browser.models.aws_tenant_condition_regions_inner import AwsTenantConditionRegionsInner as AwsTenantConditionRegionsInner
+from prisma_browser.models.background_image_control import BackgroundImageControl as BackgroundImageControl
+from prisma_browser.models.background_image_control_background_image_filter_mode import BackgroundImageControlBackgroundImageFilterMode as BackgroundImageControlBackgroundImageFilterMode
+from prisma_browser.models.background_image_control_background_image_filter_opacity import BackgroundImageControlBackgroundImageFilterOpacity as BackgroundImageControlBackgroundImageFilterOpacity
+from prisma_browser.models.background_image_control_mode import BackgroundImageControlMode as BackgroundImageControlMode
+from prisma_browser.models.background_image_control_page_mode import BackgroundImageControlPageMode as BackgroundImageControlPageMode
+from prisma_browser.models.background_image_upload_response import BackgroundImageUploadResponse as BackgroundImageUploadResponse
 from prisma_browser.models.base_application import BaseApplication as BaseApplication
 from prisma_browser.models.base_application_input import BaseApplicationInput as BaseApplicationInput
 from prisma_browser.models.base_application_with_urls import BaseApplicationWithUrls as BaseApplicationWithUrls
@@ -543,13 +851,19 @@ from prisma_browser.models.base_patch_application_input import BasePatchApplicat
 from prisma_browser.models.base_patch_rule_request import BasePatchRuleRequest as BasePatchRuleRequest
 from prisma_browser.models.base_policy_item import BasePolicyItem as BasePolicyItem
 from prisma_browser.models.base_post_rule_request import BasePostRuleRequest as BasePostRuleRequest
+from prisma_browser.models.before_file_action import BeforeFileAction as BeforeFileAction
 from prisma_browser.models.block_extensions_by_permissions_control import BlockExtensionsByPermissionsControl as BlockExtensionsByPermissionsControl
 from prisma_browser.models.block_extensions_by_permissions_control_action import BlockExtensionsByPermissionsControlAction as BlockExtensionsByPermissionsControlAction
 from prisma_browser.models.block_extensions_by_permissions_control_blocked_permissions_inner import BlockExtensionsByPermissionsControlBlockedPermissionsInner as BlockExtensionsByPermissionsControlBlockedPermissionsInner
+from prisma_browser.models.brand_color_control import BrandColorControl as BrandColorControl
+from prisma_browser.models.brand_color_control_mode import BrandColorControlMode as BrandColorControlMode
 from prisma_browser.models.browser_brand import BrowserBrand as BrowserBrand
 from prisma_browser.models.browser_brand_details import BrowserBrandDetails as BrowserBrandDetails
 from prisma_browser.models.browser_history_control import BrowserHistoryControl as BrowserHistoryControl
 from prisma_browser.models.browser_history_control_action import BrowserHistoryControlAction as BrowserHistoryControlAction
+from prisma_browser.models.browser_icon_control import BrowserIconControl as BrowserIconControl
+from prisma_browser.models.browser_icon_control_mode import BrowserIconControlMode as BrowserIconControlMode
+from prisma_browser.models.browser_icon_upload_response import BrowserIconUploadResponse as BrowserIconUploadResponse
 from prisma_browser.models.browser_lock_control import BrowserLockControl as BrowserLockControl
 from prisma_browser.models.browser_lock_control_action import BrowserLockControlAction as BrowserLockControlAction
 from prisma_browser.models.browser_lock_control_idle_timeout_minutes import BrowserLockControlIdleTimeoutMinutes as BrowserLockControlIdleTimeoutMinutes
@@ -565,35 +879,82 @@ from prisma_browser.models.catalog_application import CatalogApplication as Cata
 from prisma_browser.models.catalog_application_all_of_type import CatalogApplicationAllOfType as CatalogApplicationAllOfType
 from prisma_browser.models.catalog_attributes import CatalogAttributes as CatalogAttributes
 from prisma_browser.models.certificate_dn import CertificateDN as CertificateDN
+from prisma_browser.models.clipboard_control import ClipboardControl as ClipboardControl
+from prisma_browser.models.clipboard_control_options import ClipboardControlOptions as ClipboardControlOptions
+from prisma_browser.models.clipboard_control_options_action import ClipboardControlOptionsAction as ClipboardControlOptionsAction
+from prisma_browser.models.cloud_storage_provider import CloudStorageProvider as CloudStorageProvider
+from prisma_browser.models.cloud_storage_provider_status import CloudStorageProviderStatus as CloudStorageProviderStatus
+from prisma_browser.models.cloud_storage_provider_type import CloudStorageProviderType as CloudStorageProviderType
+from prisma_browser.models.company_logo_control import CompanyLogoControl as CompanyLogoControl
+from prisma_browser.models.company_logo_control_mode import CompanyLogoControlMode as CompanyLogoControlMode
+from prisma_browser.models.company_logo_upload_response import CompanyLogoUploadResponse as CompanyLogoUploadResponse
+from prisma_browser.models.company_name_control import CompanyNameControl as CompanyNameControl
+from prisma_browser.models.company_name_control_mode import CompanyNameControlMode as CompanyNameControlMode
 from prisma_browser.models.concurrent_number_of_devices_control import ConcurrentNumberOfDevicesControl as ConcurrentNumberOfDevicesControl
 from prisma_browser.models.concurrent_number_of_devices_control_action import ConcurrentNumberOfDevicesControlAction as ConcurrentNumberOfDevicesControlAction
 from prisma_browser.models.concurrent_number_of_devices_control_limit_mode import ConcurrentNumberOfDevicesControlLimitMode as ConcurrentNumberOfDevicesControlLimitMode
 from prisma_browser.models.cookies_control import CookiesControl as CookiesControl
 from prisma_browser.models.cookies_control_action import CookiesControlAction as CookiesControlAction
 from prisma_browser.models.create_access_and_data_rule_request import CreateAccessAndDataRuleRequest as CreateAccessAndDataRuleRequest
-from prisma_browser.models.create_application201_response import CreateApplication201Response as CreateApplication201Response
 from prisma_browser.models.create_application_plugin201_response import CreateApplicationPlugin201Response as CreateApplicationPlugin201Response
+from prisma_browser.models.create_cloud_storage_provider_request import CreateCloudStorageProviderRequest as CreateCloudStorageProviderRequest
 from prisma_browser.models.create_customization_rule_request import CreateCustomizationRuleRequest as CreateCustomizationRuleRequest
 from prisma_browser.models.create_device_group201_response import CreateDeviceGroup201Response as CreateDeviceGroup201Response
+from prisma_browser.models.create_google_provider_request import CreateGoogleProviderRequest as CreateGoogleProviderRequest
+from prisma_browser.models.create_microsoft_provider_request import CreateMicrosoftProviderRequest as CreateMicrosoftProviderRequest
 from prisma_browser.models.create_or_replace_app_group_input import CreateOrReplaceAppGroupInput as CreateOrReplaceAppGroupInput
 from prisma_browser.models.create_or_replace_app_input import CreateOrReplaceAppInput as CreateOrReplaceAppInput
-from prisma_browser.models.create_security_rule201_response import CreateSecurityRule201Response as CreateSecurityRule201Response
 from prisma_browser.models.create_security_rule_request import CreateSecurityRuleRequest as CreateSecurityRuleRequest
 from prisma_browser.models.create_sign_in_rule_request import CreateSignInRuleRequest as CreateSignInRuleRequest
 from prisma_browser.models.create_user_group201_response import CreateUserGroup201Response as CreateUserGroup201Response
 from prisma_browser.models.create_user_group_request import CreateUserGroupRequest as CreateUserGroupRequest
+from prisma_browser.models.created_id_response import CreatedIdResponse as CreatedIdResponse
 from prisma_browser.models.crowdstrike_zta_posture import CrowdstrikeZTAPosture as CrowdstrikeZTAPosture
 from prisma_browser.models.cs_zta_basic_score_level import CsZtaBasicScoreLevel as CsZtaBasicScoreLevel
 from prisma_browser.models.cs_zta_score import CsZtaScore as CsZtaScore
 from prisma_browser.models.custom_application import CustomApplication as CustomApplication
 from prisma_browser.models.custom_application_all_of_type import CustomApplicationAllOfType as CustomApplicationAllOfType
 from prisma_browser.models.custom_application_input import CustomApplicationInput as CustomApplicationInput
+from prisma_browser.models.custom_browser_preferences_control import CustomBrowserPreferencesControl as CustomBrowserPreferencesControl
+from prisma_browser.models.custom_browser_preferences_control_mode import CustomBrowserPreferencesControlMode as CustomBrowserPreferencesControlMode
+from prisma_browser.models.custom_dialog_text import CustomDialogText as CustomDialogText
+from prisma_browser.models.custom_dialog_text_external_link import CustomDialogTextExternalLink as CustomDialogTextExternalLink
+from prisma_browser.models.custom_http_header_control import CustomHttpHeaderControl as CustomHttpHeaderControl
+from prisma_browser.models.custom_http_header_control_mode import CustomHttpHeaderControlMode as CustomHttpHeaderControlMode
+from prisma_browser.models.custom_label import CustomLabel as CustomLabel
+from prisma_browser.models.custom_label_color import CustomLabelColor as CustomLabelColor
+from prisma_browser.models.custom_label_icon import CustomLabelIcon as CustomLabelIcon
+from prisma_browser.models.custom_notice_control import CustomNoticeControl as CustomNoticeControl
+from prisma_browser.models.custom_notice_control_action import CustomNoticeControlAction as CustomNoticeControlAction
+from prisma_browser.models.custom_notice_control_frequency import CustomNoticeControlFrequency as CustomNoticeControlFrequency
 from prisma_browser.models.custom_patch_application_input import CustomPatchApplicationInput as CustomPatchApplicationInput
+from prisma_browser.models.custom_profile_preferences_control import CustomProfilePreferencesControl as CustomProfilePreferencesControl
+from prisma_browser.models.custom_profile_preferences_control_mode import CustomProfilePreferencesControlMode as CustomProfilePreferencesControlMode
+from prisma_browser.models.custom_texts_control import CustomTextsControl as CustomTextsControl
+from prisma_browser.models.custom_texts_control_mode import CustomTextsControlMode as CustomTextsControlMode
+from prisma_browser.models.custom_texts_control_overrides_inner import CustomTextsControlOverridesInner as CustomTextsControlOverridesInner
+from prisma_browser.models.custom_texts_control_overrides_inner_link import CustomTextsControlOverridesInnerLink as CustomTextsControlOverridesInnerLink
 from prisma_browser.models.custom_type_input import CustomTypeInput as CustomTypeInput
+from prisma_browser.models.customization_controls import CustomizationControls as CustomizationControls
 from prisma_browser.models.customization_rule_detailed import CustomizationRuleDetailed as CustomizationRuleDetailed
+from prisma_browser.models.default_ai_provider_control import DefaultAiProviderControl as DefaultAiProviderControl
+from prisma_browser.models.default_ai_provider_control_action import DefaultAiProviderControlAction as DefaultAiProviderControlAction
+from prisma_browser.models.default_ai_provider_control_provider import DefaultAiProviderControlProvider as DefaultAiProviderControlProvider
+from prisma_browser.models.default_search_provider_control import DefaultSearchProviderControl as DefaultSearchProviderControl
+from prisma_browser.models.default_search_provider_control_action import DefaultSearchProviderControlAction as DefaultSearchProviderControlAction
+from prisma_browser.models.default_search_provider_control_provider import DefaultSearchProviderControlProvider as DefaultSearchProviderControlProvider
 from prisma_browser.models.definition_update_timeframe import DefinitionUpdateTimeframe as DefinitionUpdateTimeframe
 from prisma_browser.models.delete_application_plugin200_response import DeleteApplicationPlugin200Response as DeleteApplicationPlugin200Response
+from prisma_browser.models.delete_cloud_storage_provider_by_id409_response import DeleteCloudStorageProviderById409Response as DeleteCloudStorageProviderById409Response
 from prisma_browser.models.delete_user_group200_response import DeleteUserGroup200Response as DeleteUserGroup200Response
+from prisma_browser.models.deployment_upgrade_control import DeploymentUpgradeControl as DeploymentUpgradeControl
+from prisma_browser.models.deployment_upgrade_control_force_rollback import DeploymentUpgradeControlForceRollback as DeploymentUpgradeControlForceRollback
+from prisma_browser.models.deployment_upgrade_control_grace_period_hours import DeploymentUpgradeControlGracePeriodHours as DeploymentUpgradeControlGracePeriodHours
+from prisma_browser.models.deployment_upgrade_control_major_release_delay_days import DeploymentUpgradeControlMajorReleaseDelayDays as DeploymentUpgradeControlMajorReleaseDelayDays
+from prisma_browser.models.deployment_upgrade_control_mode import DeploymentUpgradeControlMode as DeploymentUpgradeControlMode
+from prisma_browser.models.deployment_upgrade_control_patch_delay_days import DeploymentUpgradeControlPatchDelayDays as DeploymentUpgradeControlPatchDelayDays
+from prisma_browser.models.deployment_upgrade_control_pinned_versions import DeploymentUpgradeControlPinnedVersions as DeploymentUpgradeControlPinnedVersions
+from prisma_browser.models.deployment_upgrade_control_version_update_delay_days import DeploymentUpgradeControlVersionUpdateDelayDays as DeploymentUpgradeControlVersionUpdateDelayDays
 from prisma_browser.models.device import Device as Device
 from prisma_browser.models.device_archive_response import DeviceArchiveResponse as DeviceArchiveResponse
 from prisma_browser.models.device_browser_brand import DeviceBrowserBrand as DeviceBrowserBrand
@@ -629,6 +990,7 @@ from prisma_browser.models.device_suspend_response import DeviceSuspendResponse 
 from prisma_browser.models.device_type import DeviceType as DeviceType
 from prisma_browser.models.disk_encryption_product import DiskEncryptionProduct as DiskEncryptionProduct
 from prisma_browser.models.disk_encryption_vendor_name import DiskEncryptionVendorName as DiskEncryptionVendorName
+from prisma_browser.models.dlp_profile_ref import DlpProfileRef as DlpProfileRef
 from prisma_browser.models.dns_over_https_control import DnsOverHttpsControl as DnsOverHttpsControl
 from prisma_browser.models.dns_over_https_control_action import DnsOverHttpsControlAction as DnsOverHttpsControlAction
 from prisma_browser.models.dns_over_https_control_failure_mode import DnsOverHttpsControlFailureMode as DnsOverHttpsControlFailureMode
@@ -637,10 +999,31 @@ from prisma_browser.models.enable_disable_control import EnableDisableControl as
 from prisma_browser.models.enable_disable_control_action import EnableDisableControlAction as EnableDisableControlAction
 from prisma_browser.models.enhanced_tracking_protection_control import EnhancedTrackingProtectionControl as EnhancedTrackingProtectionControl
 from prisma_browser.models.enhanced_tracking_protection_control_action import EnhancedTrackingProtectionControlAction as EnhancedTrackingProtectionControlAction
+from prisma_browser.models.enterprise_browser_policies_control import EnterpriseBrowserPoliciesControl as EnterpriseBrowserPoliciesControl
+from prisma_browser.models.enterprise_browser_policies_control_mode import EnterpriseBrowserPoliciesControlMode as EnterpriseBrowserPoliciesControlMode
+from prisma_browser.models.enterprise_browser_policies_control_policies_inner import EnterpriseBrowserPoliciesControlPoliciesInner as EnterpriseBrowserPoliciesControlPoliciesInner
 from prisma_browser.models.epp_vendor_name import EppVendorName as EppVendorName
 from prisma_browser.models.error_response import ErrorResponse as ErrorResponse
+from prisma_browser.models.extension_force_install_control import ExtensionForceInstallControl as ExtensionForceInstallControl
+from prisma_browser.models.extension_force_install_control_extensions_inner import ExtensionForceInstallControlExtensionsInner as ExtensionForceInstallControlExtensionsInner
+from prisma_browser.models.extension_force_install_control_extensions_inner_source import ExtensionForceInstallControlExtensionsInnerSource as ExtensionForceInstallControlExtensionsInnerSource
 from prisma_browser.models.external_application_launch_exception import ExternalApplicationLaunchException as ExternalApplicationLaunchException
 from prisma_browser.models.external_application_launch_exception_action import ExternalApplicationLaunchExceptionAction as ExternalApplicationLaunchExceptionAction
+from prisma_browser.models.file_download_control import FileDownloadControl as FileDownloadControl
+from prisma_browser.models.file_download_control_action import FileDownloadControlAction as FileDownloadControlAction
+from prisma_browser.models.file_download_control_apply_on import FileDownloadControlApplyOn as FileDownloadControlApplyOn
+from prisma_browser.models.file_protection_control import FileProtectionControl as FileProtectionControl
+from prisma_browser.models.file_sha256_filter import FileSha256Filter as FileSha256Filter
+from prisma_browser.models.file_sha256_filter_operator import FileSha256FilterOperator as FileSha256FilterOperator
+from prisma_browser.models.file_size_limit import FileSizeLimit as FileSizeLimit
+from prisma_browser.models.file_size_limit_operator import FileSizeLimitOperator as FileSizeLimitOperator
+from prisma_browser.models.file_size_limit_unit import FileSizeLimitUnit as FileSizeLimitUnit
+from prisma_browser.models.file_type_filter import FileTypeFilter as FileTypeFilter
+from prisma_browser.models.file_type_filter_operator import FileTypeFilterOperator as FileTypeFilterOperator
+from prisma_browser.models.file_type_filter_predefined_types_inner import FileTypeFilterPredefinedTypesInner as FileTypeFilterPredefinedTypesInner
+from prisma_browser.models.file_upload_control import FileUploadControl as FileUploadControl
+from prisma_browser.models.file_upload_control_action import FileUploadControlAction as FileUploadControlAction
+from prisma_browser.models.file_upload_control_apply_on import FileUploadControlApplyOn as FileUploadControlApplyOn
 from prisma_browser.models.firewall_product import FirewallProduct as FirewallProduct
 from prisma_browser.models.firewall_vendor_name import FirewallVendorName as FirewallVendorName
 from prisma_browser.models.flush_browser_data_control import FlushBrowserDataControl as FlushBrowserDataControl
@@ -649,6 +1032,10 @@ from prisma_browser.models.flush_browser_data_control_data_types_inner import Fl
 from prisma_browser.models.flush_browser_data_control_trigger import FlushBrowserDataControlTrigger as FlushBrowserDataControlTrigger
 from prisma_browser.models.force_https_control import ForceHttpsControl as ForceHttpsControl
 from prisma_browser.models.force_https_control_action import ForceHttpsControlAction as ForceHttpsControlAction
+from prisma_browser.models.form_login_control import FormLoginControl as FormLoginControl
+from prisma_browser.models.form_login_control_action import FormLoginControlAction as FormLoginControlAction
+from prisma_browser.models.form_submission_control import FormSubmissionControl as FormSubmissionControl
+from prisma_browser.models.form_submission_control_action import FormSubmissionControlAction as FormSubmissionControlAction
 from prisma_browser.models.get_scope import GetScope as GetScope
 from prisma_browser.models.get_scope_device_groups import GetScopeDeviceGroups as GetScopeDeviceGroups
 from prisma_browser.models.get_scope_locations import GetScopeLocations as GetScopeLocations
@@ -656,6 +1043,17 @@ from prisma_browser.models.get_scope_private_ips import GetScopePrivateIps as Ge
 from prisma_browser.models.get_scope_public_ips import GetScopePublicIps as GetScopePublicIps
 from prisma_browser.models.get_scope_users import GetScopeUsers as GetScopeUsers
 from prisma_browser.models.get_sign_in_policy200_response import GetSignInPolicy200Response as GetSignInPolicy200Response
+from prisma_browser.models.google_properties import GoogleProperties as GoogleProperties
+from prisma_browser.models.google_tenant_condition import GoogleTenantCondition as GoogleTenantCondition
+from prisma_browser.models.home_page_control import HomePageControl as HomePageControl
+from prisma_browser.models.home_page_control_mode import HomePageControlMode as HomePageControlMode
+from prisma_browser.models.identity_provider_synced_shortcuts_control import IdentityProviderSyncedShortcutsControl as IdentityProviderSyncedShortcutsControl
+from prisma_browser.models.identity_provider_synced_shortcuts_control_action import IdentityProviderSyncedShortcutsControlAction as IdentityProviderSyncedShortcutsControlAction
+from prisma_browser.models.incognito_control import IncognitoControl as IncognitoControl
+from prisma_browser.models.incognito_control_action import IncognitoControlAction as IncognitoControlAction
+from prisma_browser.models.internal_network_detection_control import InternalNetworkDetectionControl as InternalNetworkDetectionControl
+from prisma_browser.models.internal_network_detection_control_action import InternalNetworkDetectionControlAction as InternalNetworkDetectionControlAction
+from prisma_browser.models.internal_network_detection_control_host_detection import InternalNetworkDetectionControlHostDetection as InternalNetworkDetectionControlHostDetection
 from prisma_browser.models.internet_explorer_compatibility_mode_control import InternetExplorerCompatibilityModeControl as InternetExplorerCompatibilityModeControl
 from prisma_browser.models.internet_explorer_compatibility_site import InternetExplorerCompatibilitySite as InternetExplorerCompatibilitySite
 from prisma_browser.models.internet_explorer_compatibility_site_document_mode import InternetExplorerCompatibilitySiteDocumentMode as InternetExplorerCompatibilitySiteDocumentMode
@@ -682,6 +1080,7 @@ from prisma_browser.models.list_application_plugins200_response import ListAppli
 from prisma_browser.models.list_applications200_response import ListApplications200Response as ListApplications200Response
 from prisma_browser.models.list_applications_sort_parameter import ListApplicationsSortParameter as ListApplicationsSortParameter
 from prisma_browser.models.list_applications_type_parameter import ListApplicationsTypeParameter as ListApplicationsTypeParameter
+from prisma_browser.models.list_cloud_storage_providers200_response import ListCloudStorageProviders200Response as ListCloudStorageProviders200Response
 from prisma_browser.models.list_device_groups200_response import ListDeviceGroups200Response as ListDeviceGroups200Response
 from prisma_browser.models.list_device_groups_sort_parameter import ListDeviceGroupsSortParameter as ListDeviceGroupsSortParameter
 from prisma_browser.models.list_devices200_response import ListDevices200Response as ListDevices200Response
@@ -693,6 +1092,8 @@ from prisma_browser.models.list_user_requests_request_type_parameter import List
 from prisma_browser.models.list_user_requests_sort_parameter import ListUserRequestsSortParameter as ListUserRequestsSortParameter
 from prisma_browser.models.list_users200_response import ListUsers200Response as ListUsers200Response
 from prisma_browser.models.list_users_sort_parameter import ListUsersSortParameter as ListUsersSortParameter
+from prisma_browser.models.live_page_scanning_control import LivePageScanningControl as LivePageScanningControl
+from prisma_browser.models.live_page_scanning_control_action import LivePageScanningControlAction as LivePageScanningControlAction
 from prisma_browser.models.local_desktop_app_executable_input import LocalDesktopAppExecutableInput as LocalDesktopAppExecutableInput
 from prisma_browser.models.local_desktop_app_executables_input import LocalDesktopAppExecutablesInput as LocalDesktopAppExecutablesInput
 from prisma_browser.models.local_desktop_application import LocalDesktopApplication as LocalDesktopApplication
@@ -710,10 +1111,19 @@ from prisma_browser.models.mac_os_file_existence_metadata import MacOSFileExiste
 from prisma_browser.models.mac_os_running_process_metadata import MacOSRunningProcessMetadata as MacOSRunningProcessMetadata
 from prisma_browser.models.mac_os_version import MacOSVersion as MacOSVersion
 from prisma_browser.models.mac_os_version_attribute import MacOSVersionAttribute as MacOSVersionAttribute
+from prisma_browser.models.malicious_file_protection_control import MaliciousFileProtectionControl as MaliciousFileProtectionControl
+from prisma_browser.models.malicious_file_protection_control_action import MaliciousFileProtectionControlAction as MaliciousFileProtectionControlAction
+from prisma_browser.models.malicious_file_protection_control_detection_action import MaliciousFileProtectionControlDetectionAction as MaliciousFileProtectionControlDetectionAction
+from prisma_browser.models.malicious_file_protection_control_provider import MaliciousFileProtectionControlProvider as MaliciousFileProtectionControlProvider
+from prisma_browser.models.managed_shortcuts_control import ManagedShortcutsControl as ManagedShortcutsControl
+from prisma_browser.models.managed_shortcuts_control_mode import ManagedShortcutsControlMode as ManagedShortcutsControlMode
+from prisma_browser.models.managed_shortcuts_control_shortcuts_inner import ManagedShortcutsControlShortcutsInner as ManagedShortcutsControlShortcutsInner
 from prisma_browser.models.management_system_type import ManagementSystemType as ManagementSystemType
 from prisma_browser.models.metadata import Metadata as Metadata
 from prisma_browser.models.metadata_configuration_version import MetadataConfigurationVersion as MetadataConfigurationVersion
 from prisma_browser.models.metadata_configuration_version_status import MetadataConfigurationVersionStatus as MetadataConfigurationVersionStatus
+from prisma_browser.models.microsoft365_tenant_condition import Microsoft365TenantCondition as Microsoft365TenantCondition
+from prisma_browser.models.microsoft_properties import MicrosoftProperties as MicrosoftProperties
 from prisma_browser.models.mobile_device_management_system import MobileDeviceManagementSystem as MobileDeviceManagementSystem
 from prisma_browser.models.mobile_device_management_system_name import MobileDeviceManagementSystemName as MobileDeviceManagementSystemName
 from prisma_browser.models.mobile_device_type import MobileDeviceType as MobileDeviceType
@@ -722,6 +1132,8 @@ from prisma_browser.models.mobile_os import MobileOs as MobileOs
 from prisma_browser.models.mobile_os_version import MobileOsVersion as MobileOsVersion
 from prisma_browser.models.native_messaging_hosts_control import NativeMessagingHostsControl as NativeMessagingHostsControl
 from prisma_browser.models.native_messaging_hosts_control_action import NativeMessagingHostsControlAction as NativeMessagingHostsControlAction
+from prisma_browser.models.new_tab_page_control import NewTabPageControl as NewTabPageControl
+from prisma_browser.models.new_tab_page_control_page_type import NewTabPageControlPageType as NewTabPageControlPageType
 from prisma_browser.models.non_web_application import NonWebApplication as NonWebApplication
 from prisma_browser.models.non_web_application_all_of_type import NonWebApplicationAllOfType as NonWebApplicationAllOfType
 from prisma_browser.models.non_web_application_input import NonWebApplicationInput as NonWebApplicationInput
@@ -729,14 +1141,36 @@ from prisma_browser.models.non_web_patch_application_input import NonWebPatchApp
 from prisma_browser.models.nonweb_type_input import NonwebTypeInput as NonwebTypeInput
 from prisma_browser.models.notifications_control import NotificationsControl as NotificationsControl
 from prisma_browser.models.notifications_control_action import NotificationsControlAction as NotificationsControlAction
+from prisma_browser.models.on_browser_startup_control import OnBrowserStartupControl as OnBrowserStartupControl
+from prisma_browser.models.on_browser_startup_control_action import OnBrowserStartupControlAction as OnBrowserStartupControlAction
+from prisma_browser.models.onboarding_wizard_control import OnboardingWizardControl as OnboardingWizardControl
+from prisma_browser.models.onboarding_wizard_control_steps import OnboardingWizardControlSteps as OnboardingWizardControlSteps
+from prisma_browser.models.onboarding_wizard_control_steps_customize import OnboardingWizardControlStepsCustomize as OnboardingWizardControlStepsCustomize
+from prisma_browser.models.onboarding_wizard_control_steps_extension import OnboardingWizardControlStepsExtension as OnboardingWizardControlStepsExtension
+from prisma_browser.models.onboarding_wizard_control_steps_import import OnboardingWizardControlStepsImport as OnboardingWizardControlStepsImport
+from prisma_browser.models.onboarding_wizard_control_steps_mobile import OnboardingWizardControlStepsMobile as OnboardingWizardControlStepsMobile
+from prisma_browser.models.onboarding_wizard_control_steps_password_manager import OnboardingWizardControlStepsPasswordManager as OnboardingWizardControlStepsPasswordManager
+from prisma_browser.models.onboarding_wizard_control_steps_policy import OnboardingWizardControlStepsPolicy as OnboardingWizardControlStepsPolicy
+from prisma_browser.models.onboarding_wizard_control_steps_restriction import OnboardingWizardControlStepsRestriction as OnboardingWizardControlStepsRestriction
+from prisma_browser.models.onboarding_wizard_control_steps_welcome import OnboardingWizardControlStepsWelcome as OnboardingWizardControlStepsWelcome
+from prisma_browser.models.onboarding_wizard_control_steps_welcome_link import OnboardingWizardControlStepsWelcomeLink as OnboardingWizardControlStepsWelcomeLink
+from prisma_browser.models.open_ai_tenant_condition import OpenAITenantCondition as OpenAITenantCondition
+from prisma_browser.models.open_in_prisma_browser import OpenInPrismaBrowser as OpenInPrismaBrowser
 from prisma_browser.models.open_links_in_external_apps_control import OpenLinksInExternalAppsControl as OpenLinksInExternalAppsControl
 from prisma_browser.models.open_links_in_external_apps_control_action import OpenLinksInExternalAppsControlAction as OpenLinksInExternalAppsControlAction
 from prisma_browser.models.open_links_in_external_apps_control_allowed_apps_inner import OpenLinksInExternalAppsControlAllowedAppsInner as OpenLinksInExternalAppsControlAllowedAppsInner
 from prisma_browser.models.order import Order as Order
 from prisma_browser.models.os_password_complexity import OsPasswordComplexity as OsPasswordComplexity
+from prisma_browser.models.override_duration_minutes import OverrideDurationMinutes as OverrideDurationMinutes
+from prisma_browser.models.pac_file_upload_response import PacFileUploadResponse as PacFileUploadResponse
 from prisma_browser.models.page_info import PageInfo as PageInfo
+from prisma_browser.models.page_translation_google_translate_control import PageTranslationGoogleTranslateControl as PageTranslationGoogleTranslateControl
+from prisma_browser.models.page_translation_google_translate_control_action import PageTranslationGoogleTranslateControlAction as PageTranslationGoogleTranslateControlAction
 from prisma_browser.models.pages_with_insecure_content_control import PagesWithInsecureContentControl as PagesWithInsecureContentControl
 from prisma_browser.models.pages_with_insecure_content_control_action import PagesWithInsecureContentControlAction as PagesWithInsecureContentControlAction
+from prisma_browser.models.passkey_login_control import PasskeyLoginControl as PasskeyLoginControl
+from prisma_browser.models.passkey_login_control_action import PasskeyLoginControlAction as PasskeyLoginControlAction
+from prisma_browser.models.patch_access_and_data_rule_by_id_request import PatchAccessAndDataRuleByIDRequest as PatchAccessAndDataRuleByIDRequest
 from prisma_browser.models.patch_app_group_input import PatchAppGroupInput as PatchAppGroupInput
 from prisma_browser.models.patch_app_group_input_applications import PatchAppGroupInputApplications as PatchAppGroupInputApplications
 from prisma_browser.models.patch_app_input import PatchAppInput as PatchAppInput
@@ -793,28 +1227,53 @@ from prisma_browser.models.post_scope_locations import PostScopeLocations as Pos
 from prisma_browser.models.post_scope_private_ips import PostScopePrivateIps as PostScopePrivateIps
 from prisma_browser.models.post_scope_public_ips import PostScopePublicIps as PostScopePublicIps
 from prisma_browser.models.post_scope_users import PostScopeUsers as PostScopeUsers
+from prisma_browser.models.print_control import PrintControl as PrintControl
+from prisma_browser.models.print_control_action import PrintControlAction as PrintControlAction
 from prisma_browser.models.private_application import PrivateApplication as PrivateApplication
 from prisma_browser.models.private_application_all_of_type import PrivateApplicationAllOfType as PrivateApplicationAllOfType
 from prisma_browser.models.private_application_input import PrivateApplicationInput as PrivateApplicationInput
 from prisma_browser.models.private_patch_application_input import PrivatePatchApplicationInput as PrivatePatchApplicationInput
 from prisma_browser.models.private_type_input import PrivateTypeInput as PrivateTypeInput
+from prisma_browser.models.profile_sync_control import ProfileSyncControl as ProfileSyncControl
+from prisma_browser.models.profile_sync_control_mode import ProfileSyncControlMode as ProfileSyncControlMode
+from prisma_browser.models.profile_sync_control_sync_mode import ProfileSyncControlSyncMode as ProfileSyncControlSyncMode
+from prisma_browser.models.profile_sync_control_sync_types_inner import ProfileSyncControlSyncTypesInner as ProfileSyncControlSyncTypesInner
+from prisma_browser.models.proxy_auto_configuration_pac_file_control import ProxyAutoConfigurationPacFileControl as ProxyAutoConfigurationPacFileControl
+from prisma_browser.models.proxy_auto_configuration_pac_file_control_mode import ProxyAutoConfigurationPacFileControlMode as ProxyAutoConfigurationPacFileControlMode
 from prisma_browser.models.publish_draft_configuration409_response import PublishDraftConfiguration409Response as PublishDraftConfiguration409Response
 from prisma_browser.models.publish_draft_configuration501_response import PublishDraftConfiguration501Response as PublishDraftConfiguration501Response
 from prisma_browser.models.publish_draft_configuration_request import PublishDraftConfigurationRequest as PublishDraftConfigurationRequest
 from prisma_browser.models.reg_key import RegKey as RegKey
 from prisma_browser.models.reg_value import RegValue as RegValue
 from prisma_browser.models.registry_value_type import RegistryValueType as RegistryValueType
+from prisma_browser.models.replace_google_provider_request import ReplaceGoogleProviderRequest as ReplaceGoogleProviderRequest
+from prisma_browser.models.replace_microsoft_provider_request import ReplaceMicrosoftProviderRequest as ReplaceMicrosoftProviderRequest
 from prisma_browser.models.request_action import RequestAction as RequestAction
 from prisma_browser.models.request_action_action import RequestActionAction as RequestActionAction
 from prisma_browser.models.request_action_admin_bypass_timeframe import RequestActionAdminBypassTimeframe as RequestActionAdminBypassTimeframe
+from prisma_browser.models.request_desktop_mobile_site_control import RequestDesktopMobileSiteControl as RequestDesktopMobileSiteControl
+from prisma_browser.models.request_desktop_mobile_site_control_rules_inner import RequestDesktopMobileSiteControlRulesInner as RequestDesktopMobileSiteControlRulesInner
+from prisma_browser.models.request_desktop_mobile_site_control_rules_inner_mode import RequestDesktopMobileSiteControlRulesInnerMode as RequestDesktopMobileSiteControlRulesInnerMode
 from prisma_browser.models.request_error import RequestError as RequestError
 from prisma_browser.models.response_metadata import ResponseMetadata as ResponseMetadata
 from prisma_browser.models.restrict_extension_host_permissions_control import RestrictExtensionHostPermissionsControl as RestrictExtensionHostPermissionsControl
 from prisma_browser.models.restrict_extension_host_permissions_control_action import RestrictExtensionHostPermissionsControlAction as RestrictExtensionHostPermissionsControlAction
+from prisma_browser.models.restricted_rule_mode import RestrictedRuleMode as RestrictedRuleMode
 from prisma_browser.models.revoke_request_action import RevokeRequestAction as RevokeRequestAction
 from prisma_browser.models.rule_mode import RuleMode as RuleMode
 from prisma_browser.models.rule_summary import RuleSummary as RuleSummary
 from prisma_browser.models.rule_summary_all_of_type import RuleSummaryAllOfType as RuleSummaryAllOfType
+from prisma_browser.models.sanitizing_content_control import SanitizingContentControl as SanitizingContentControl
+from prisma_browser.models.sanitizing_content_control_action import SanitizingContentControlAction as SanitizingContentControlAction
+from prisma_browser.models.screenshot_control import ScreenshotControl as ScreenshotControl
+from prisma_browser.models.screenshot_control_action import ScreenshotControlAction as ScreenshotControlAction
+from prisma_browser.models.search_engine_content_filtering_control import SearchEngineContentFilteringControl as SearchEngineContentFilteringControl
+from prisma_browser.models.search_engine_content_filtering_control_action import SearchEngineContentFilteringControlAction as SearchEngineContentFilteringControlAction
+from prisma_browser.models.search_engine_content_filtering_control_engines_inner import SearchEngineContentFilteringControlEnginesInner as SearchEngineContentFilteringControlEnginesInner
+from prisma_browser.models.search_engine_content_filtering_control_engines_inner_name import SearchEngineContentFilteringControlEnginesInnerName as SearchEngineContentFilteringControlEnginesInnerName
+from prisma_browser.models.search_suggestions_control import SearchSuggestionsControl as SearchSuggestionsControl
+from prisma_browser.models.search_suggestions_control_action import SearchSuggestionsControlAction as SearchSuggestionsControlAction
+from prisma_browser.models.seb_api_v1_integrations_cloud_storage_provider_id_put_request import SebApiV1IntegrationsCloudStorageProviderIdPutRequest as SebApiV1IntegrationsCloudStorageProviderIdPutRequest
 from prisma_browser.models.section import Section as Section
 from prisma_browser.models.section_all_of_type import SectionAllOfType as SectionAllOfType
 from prisma_browser.models.section_detailed import SectionDetailed as SectionDetailed
@@ -832,10 +1291,18 @@ from prisma_browser.models.sign_in_rule_action import SignInRuleAction as SignIn
 from prisma_browser.models.sign_in_rule_detailed import SignInRuleDetailed as SignInRuleDetailed
 from prisma_browser.models.sign_in_rule_detailed_action import SignInRuleDetailedAction as SignInRuleDetailedAction
 from prisma_browser.models.sign_in_rule_detailed_action_action import SignInRuleDetailedActionAction as SignInRuleDetailedActionAction
+from prisma_browser.models.slack_tenant_condition import SlackTenantCondition as SlackTenantCondition
+from prisma_browser.models.suggest_default_browser_control import SuggestDefaultBrowserControl as SuggestDefaultBrowserControl
+from prisma_browser.models.suggest_default_browser_control_action import SuggestDefaultBrowserControlAction as SuggestDefaultBrowserControlAction
 from prisma_browser.models.suspend_users400_response import SuspendUsers400Response as SuspendUsers400Response
 from prisma_browser.models.system_integrity_posture import SystemIntegrityPosture as SystemIntegrityPosture
 from prisma_browser.models.system_integrity_posture_services import SystemIntegrityPostureServices as SystemIntegrityPostureServices
 from prisma_browser.models.system_integrity_posture_status import SystemIntegrityPostureStatus as SystemIntegrityPostureStatus
+from prisma_browser.models.tenant_conditions import TenantConditions as TenantConditions
+from prisma_browser.models.theme_color_control import ThemeColorControl as ThemeColorControl
+from prisma_browser.models.theme_color_control_mode import ThemeColorControlMode as ThemeColorControlMode
+from prisma_browser.models.traffic_flow_control import TrafficFlowControl as TrafficFlowControl
+from prisma_browser.models.traffic_flow_control_action import TrafficFlowControlAction as TrafficFlowControlAction
 from prisma_browser.models.trusted_certificate_authorities_control import TrustedCertificateAuthoritiesControl as TrustedCertificateAuthoritiesControl
 from prisma_browser.models.trusted_certificate_authorities_control_mode import TrustedCertificateAuthoritiesControlMode as TrustedCertificateAuthoritiesControlMode
 from prisma_browser.models.trusted_certificate_entry import TrustedCertificateEntry as TrustedCertificateEntry
@@ -850,10 +1317,14 @@ from prisma_browser.models.update_user_group_request_users_inner import UpdateUs
 from prisma_browser.models.update_user_group_request_users_inner_action import UpdateUserGroupRequestUsersInnerAction as UpdateUserGroupRequestUsersInnerAction
 from prisma_browser.models.url_input import UrlInput as UrlInput
 from prisma_browser.models.user import User as User
+from prisma_browser.models.user_agent_control import UserAgentControl as UserAgentControl
+from prisma_browser.models.user_agent_control_mode import UserAgentControlMode as UserAgentControlMode
 from prisma_browser.models.user_force_reauth_response import UserForceReauthResponse as UserForceReauthResponse
 from prisma_browser.models.user_group import UserGroup as UserGroup
 from prisma_browser.models.user_group_provider import UserGroupProvider as UserGroupProvider
 from prisma_browser.models.user_group_ref import UserGroupRef as UserGroupRef
+from prisma_browser.models.user_prompt import UserPrompt as UserPrompt
+from prisma_browser.models.user_prompt_mode import UserPromptMode as UserPromptMode
 from prisma_browser.models.user_provider import UserProvider as UserProvider
 from prisma_browser.models.user_ref import UserRef as UserRef
 from prisma_browser.models.user_request import UserRequest as UserRequest
@@ -862,8 +1333,21 @@ from prisma_browser.models.user_resume_response import UserResumeResponse as Use
 from prisma_browser.models.user_status import UserStatus as UserStatus
 from prisma_browser.models.user_status_change_request import UserStatusChangeRequest as UserStatusChangeRequest
 from prisma_browser.models.user_suspend_response import UserSuspendResponse as UserSuspendResponse
+from prisma_browser.models.watermark_control import WatermarkControl as WatermarkControl
+from prisma_browser.models.watermark_control_action import WatermarkControlAction as WatermarkControlAction
+from prisma_browser.models.watermark_control_settings import WatermarkControlSettings as WatermarkControlSettings
+from prisma_browser.models.watermark_control_settings_density_level import WatermarkControlSettingsDensityLevel as WatermarkControlSettingsDensityLevel
+from prisma_browser.models.watermark_control_settings_logo_color import WatermarkControlSettingsLogoColor as WatermarkControlSettingsLogoColor
+from prisma_browser.models.watermark_control_settings_rotation_degrees import WatermarkControlSettingsRotationDegrees as WatermarkControlSettingsRotationDegrees
+from prisma_browser.models.web_classification import WebClassification as WebClassification
 from prisma_browser.models.web_rtc_control import WebRtcControl as WebRtcControl
 from prisma_browser.models.web_rtc_control_action import WebRtcControlAction as WebRtcControlAction
+from prisma_browser.models.web_user_interaction_control import WebUserInteractionControl as WebUserInteractionControl
+from prisma_browser.models.web_user_interaction_control_action import WebUserInteractionControlAction as WebUserInteractionControlAction
+from prisma_browser.models.web_user_interaction_control_selectors_inner import WebUserInteractionControlSelectorsInner as WebUserInteractionControlSelectorsInner
+from prisma_browser.models.webpage_data_masking_control import WebpageDataMaskingControl as WebpageDataMaskingControl
+from prisma_browser.models.webpage_data_masking_control_mask_type import WebpageDataMaskingControlMaskType as WebpageDataMaskingControlMaskType
+from prisma_browser.models.webpage_data_masking_control_visible_character_count import WebpageDataMaskingControlVisibleCharacterCount as WebpageDataMaskingControlVisibleCharacterCount
 from prisma_browser.models.win_file_existence_metadata import WinFileExistenceMetadata as WinFileExistenceMetadata
 from prisma_browser.models.win_running_process_metadata import WinRunningProcessMetadata as WinRunningProcessMetadata
 from prisma_browser.models.windows_edition import WindowsEdition as WindowsEdition

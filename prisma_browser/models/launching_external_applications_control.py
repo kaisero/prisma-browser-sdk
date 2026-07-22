@@ -28,7 +28,7 @@ from pydantic_core import to_jsonable_python
 
 class LaunchingExternalApplicationsControl(BaseModel):
     """
-    Control whether external applications may launch from Prisma Browser.
+    Configure the default behavior when users click links that launch external applications. You can then define exceptions for specific applications.
     """ # noqa: E501
     action: LaunchingExternalApplicationsControlAction
     exceptions: Optional[Annotated[List[ExternalApplicationLaunchException], Field(max_length=256)]] = Field(default=None, description="Application-specific launch handling exceptions.")

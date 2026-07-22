@@ -60,7 +60,7 @@ class SecurityControls(BaseModel):
     """
     Controls for security rules.
     """ # noqa: E501
-    developer_tools: Optional[AllowBlockControl] = Field(default=None, description="Control DevTools to avoid inspection of browser extensions.", alias="developerTools")
+    developer_tools_for_extensions: Optional[AllowBlockControl] = Field(default=None, description="Control DevTools to avoid inspection of browser extensions.", alias="developerToolsForExtensions")
     cast: Optional[AllowBlockControl] = Field(default=None, description="Control the ability to cast a tab or the whole desktop via Prisma Browser. Prisma Browser restart required to apply.")
     cookies_protection: Optional[EnableDisableControl] = Field(default=None, description="Control the encryption of stored cookies on the device.", alias="cookiesProtection")
     browser_history: Optional[BrowserHistoryControl] = Field(default=None, alias="browserHistory")
@@ -104,8 +104,7 @@ class SecurityControls(BaseModel):
     local_fonts: Optional[AllowBlockControl] = Field(default=None, description="Control the access to local fonts installed on the device, which might be exploited.", alias="localFonts")
     flush_browser_data: Optional[FlushBrowserDataControl] = Field(default=None, alias="flushBrowserData")
     legacy_password_manager: Optional[LegacyPasswordManagerControl] = Field(default=None, alias="legacyPasswordManager")
-    hide_sensitive_data_from_extensions: Optional[EnableDisableControl] = Field(default=None, alias="hideSensitiveDataFromExtensions")
-    remote_debugging: Optional[AllowBlockControl] = Field(default=None, description="Control remote debugging on Android and iOS devices to prevent data leaks and simplify troubleshooting.", alias="remoteDebugging")
+    hide_sensitive_data_from_extensions: Optional[EnableDisableControl] = Field(default=None, description="Prevent all extensions from accessing cookies and authorization data sent by the browser.", alias="hideSensitiveDataFromExtensions")
     internet_explorer_compatibility_mode: Optional[InternetExplorerCompatibilityModeControl] = Field(default=None, alias="internetExplorerCompatibilityMode")
     launching_external_applications: Optional[LaunchingExternalApplicationsControl] = Field(default=None, alias="launchingExternalApplications")
     cookies: Optional[CookiesControl] = None
@@ -121,7 +120,7 @@ class SecurityControls(BaseModel):
     kerberos_delegation_allowlist: Optional[KerberosDelegationAllowlistControl] = Field(default=None, alias="kerberosDelegationAllowlist")
     authentication_server_allowlist: Optional[AuthenticationServerAllowlistControl] = Field(default=None, alias="authenticationServerAllowlist")
     concurrent_number_of_devices: Optional[ConcurrentNumberOfDevicesControl] = Field(default=None, alias="concurrentNumberOfDevices")
-    __properties: ClassVar[List[str]] = ["developerTools", "cast", "cookiesProtection", "browserHistory", "dnsOverHttps", "browserSelfProtection", "keyloggingProtection", "browserLock", "authenticationFactor", "sessionRefresh", "nativeMessagingHosts", "allowedOrBlockedExtensions", "blockExtensionsByPermissions", "postQuantumKeySecurity", "strictOriginIsolation", "advancedBrowserProtection", "userDataDirectoryProtection", "mobilePasswordSaving", "autofillOfForms", "autofillOfCreditCards", "javaScriptRunningFromOmnibox", "pagesWithSslErrors", "basicAuthenticationOverHttp", "thirdPartyCookies", "printPreview", "googleCloudPrint", "allowedPrinters", "openLinksInExternalApps", "trustedCertificateAuthorities", "remoteHostFirewallTraversal", "endProcessViaTaskManager", "pdfium", "webGlApi", "fileSystemApi", "sensorsApi", "webSerialApi", "webBluetoothApi", "webUsbApi", "webHidApi", "quicProtocol", "webClipboardApi", "localFonts", "flushBrowserData", "legacyPasswordManager", "hideSensitiveDataFromExtensions", "remoteDebugging", "internetExplorerCompatibilityMode", "launchingExternalApplications", "cookies", "localNetworkAccessRestrictions", "enhancedTrackingProtection", "forceHttps", "javaScriptV8JitAndWebAssembly", "restrictExtensionHostPermissions", "webRtc", "notifications", "popups", "pagesWithInsecureContent", "kerberosDelegationAllowlist", "authenticationServerAllowlist", "concurrentNumberOfDevices"]
+    __properties: ClassVar[List[str]] = ["developerToolsForExtensions", "cast", "cookiesProtection", "browserHistory", "dnsOverHttps", "browserSelfProtection", "keyloggingProtection", "browserLock", "authenticationFactor", "sessionRefresh", "nativeMessagingHosts", "allowedOrBlockedExtensions", "blockExtensionsByPermissions", "postQuantumKeySecurity", "strictOriginIsolation", "advancedBrowserProtection", "userDataDirectoryProtection", "mobilePasswordSaving", "autofillOfForms", "autofillOfCreditCards", "javaScriptRunningFromOmnibox", "pagesWithSslErrors", "basicAuthenticationOverHttp", "thirdPartyCookies", "printPreview", "googleCloudPrint", "allowedPrinters", "openLinksInExternalApps", "trustedCertificateAuthorities", "remoteHostFirewallTraversal", "endProcessViaTaskManager", "pdfium", "webGlApi", "fileSystemApi", "sensorsApi", "webSerialApi", "webBluetoothApi", "webUsbApi", "webHidApi", "quicProtocol", "webClipboardApi", "localFonts", "flushBrowserData", "legacyPasswordManager", "hideSensitiveDataFromExtensions", "internetExplorerCompatibilityMode", "launchingExternalApplications", "cookies", "localNetworkAccessRestrictions", "enhancedTrackingProtection", "forceHttps", "javaScriptV8JitAndWebAssembly", "restrictExtensionHostPermissions", "webRtc", "notifications", "popups", "pagesWithInsecureContent", "kerberosDelegationAllowlist", "authenticationServerAllowlist", "concurrentNumberOfDevices"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -162,9 +161,9 @@ class SecurityControls(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of developer_tools
-        if self.developer_tools:
-            _dict['developerTools'] = self.developer_tools.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of developer_tools_for_extensions
+        if self.developer_tools_for_extensions:
+            _dict['developerToolsForExtensions'] = self.developer_tools_for_extensions.to_dict()
         # override the default output from pydantic by calling `to_dict()` of cast
         if self.cast:
             _dict['cast'] = self.cast.to_dict()
@@ -297,9 +296,6 @@ class SecurityControls(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of hide_sensitive_data_from_extensions
         if self.hide_sensitive_data_from_extensions:
             _dict['hideSensitiveDataFromExtensions'] = self.hide_sensitive_data_from_extensions.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of remote_debugging
-        if self.remote_debugging:
-            _dict['remoteDebugging'] = self.remote_debugging.to_dict()
         # override the default output from pydantic by calling `to_dict()` of internet_explorer_compatibility_mode
         if self.internet_explorer_compatibility_mode:
             _dict['internetExplorerCompatibilityMode'] = self.internet_explorer_compatibility_mode.to_dict()
@@ -345,10 +341,10 @@ class SecurityControls(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of concurrent_number_of_devices
         if self.concurrent_number_of_devices:
             _dict['concurrentNumberOfDevices'] = self.concurrent_number_of_devices.to_dict()
-        # set to None if developer_tools (nullable) is None
+        # set to None if developer_tools_for_extensions (nullable) is None
         # and model_fields_set contains the field
-        if self.developer_tools is None and "developer_tools" in self.model_fields_set:
-            _dict['developerTools'] = None
+        if self.developer_tools_for_extensions is None and "developer_tools_for_extensions" in self.model_fields_set:
+            _dict['developerToolsForExtensions'] = None
 
         # set to None if cast (nullable) is None
         # and model_fields_set contains the field
@@ -570,11 +566,6 @@ class SecurityControls(BaseModel):
         if self.hide_sensitive_data_from_extensions is None and "hide_sensitive_data_from_extensions" in self.model_fields_set:
             _dict['hideSensitiveDataFromExtensions'] = None
 
-        # set to None if remote_debugging (nullable) is None
-        # and model_fields_set contains the field
-        if self.remote_debugging is None and "remote_debugging" in self.model_fields_set:
-            _dict['remoteDebugging'] = None
-
         # set to None if internet_explorer_compatibility_mode (nullable) is None
         # and model_fields_set contains the field
         if self.internet_explorer_compatibility_mode is None and "internet_explorer_compatibility_mode" in self.model_fields_set:
@@ -662,7 +653,7 @@ class SecurityControls(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "developerTools": AllowBlockControl.from_dict(obj["developerTools"]) if obj.get("developerTools") is not None else None,
+            "developerToolsForExtensions": AllowBlockControl.from_dict(obj["developerToolsForExtensions"]) if obj.get("developerToolsForExtensions") is not None else None,
             "cast": AllowBlockControl.from_dict(obj["cast"]) if obj.get("cast") is not None else None,
             "cookiesProtection": EnableDisableControl.from_dict(obj["cookiesProtection"]) if obj.get("cookiesProtection") is not None else None,
             "browserHistory": BrowserHistoryControl.from_dict(obj["browserHistory"]) if obj.get("browserHistory") is not None else None,
@@ -707,7 +698,6 @@ class SecurityControls(BaseModel):
             "flushBrowserData": FlushBrowserDataControl.from_dict(obj["flushBrowserData"]) if obj.get("flushBrowserData") is not None else None,
             "legacyPasswordManager": LegacyPasswordManagerControl.from_dict(obj["legacyPasswordManager"]) if obj.get("legacyPasswordManager") is not None else None,
             "hideSensitiveDataFromExtensions": EnableDisableControl.from_dict(obj["hideSensitiveDataFromExtensions"]) if obj.get("hideSensitiveDataFromExtensions") is not None else None,
-            "remoteDebugging": AllowBlockControl.from_dict(obj["remoteDebugging"]) if obj.get("remoteDebugging") is not None else None,
             "internetExplorerCompatibilityMode": InternetExplorerCompatibilityModeControl.from_dict(obj["internetExplorerCompatibilityMode"]) if obj.get("internetExplorerCompatibilityMode") is not None else None,
             "launchingExternalApplications": LaunchingExternalApplicationsControl.from_dict(obj["launchingExternalApplications"]) if obj.get("launchingExternalApplications") is not None else None,
             "cookies": CookiesControl.from_dict(obj["cookies"]) if obj.get("cookies") is not None else None,

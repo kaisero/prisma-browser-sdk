@@ -32,7 +32,7 @@ class LegacyPasswordManagerControl(BaseModel):
     action: LegacyPasswordManagerControlAction
     mfa_required: Optional[StrictBool] = Field(default=None, description="Whether MFA is required before accessing stored passwords.", alias="mfaRequired")
     mfa_prompt_frequency_minutes: Optional[LegacyPasswordManagerControlMfaPromptFrequencyMinutes] = Field(default=None, alias="mfaPromptFrequencyMinutes")
-    disable_password_export: Optional[StrictBool] = Field(default=None, description="Whether users are prevented from exporting saved logins.", alias="disablePasswordExport")
+    disable_password_export: Optional[StrictBool] = Field(default=None, description="Whether users are prevented from exporting saved logins. Only allowed when action is 'disable'. Must not be set when action is 'enable'.", alias="disablePasswordExport")
     __properties: ClassVar[List[str]] = ["action", "mfaRequired", "mfaPromptFrequencyMinutes", "disablePasswordExport"]
 
     model_config = ConfigDict(

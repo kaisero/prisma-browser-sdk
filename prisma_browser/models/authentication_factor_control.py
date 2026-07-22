@@ -15,7 +15,7 @@
 from __future__ import annotations
 import json
 import pprint
-from pydantic import BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
+from pydantic import model_serializer, BaseModel, ConfigDict, Field, StrictStr, ValidationError, field_validator
 from typing import Any, List, Optional
 from prisma_browser.models.authentication_factor_identity_provider_control import AuthenticationFactorIdentityProviderControl
 from prisma_browser.models.authentication_factor_passkey_control import AuthenticationFactorPasskeyControl
@@ -172,6 +172,13 @@ class AuthenticationFactorControl(BaseModel):
         else:
             # primitive type
             return self.actual_instance
+
+    @model_serializer
+    def _phantasos_unwrap(self) -> Any:
+        """phantasos: serialize a oneOf wrapper as its actual instance, so
+        model_dump()/model_dump_json() match the hand-written to_dict() instead
+        of leaking the generator scaffolding (actual_instance, one_of_schemas, ...)."""
+        return self.actual_instance
 
     def to_str(self) -> str:
         """Returns the string representation of the actual instance"""

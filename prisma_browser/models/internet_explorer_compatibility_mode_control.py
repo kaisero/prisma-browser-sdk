@@ -27,9 +27,9 @@ from pydantic_core import to_jsonable_python
 
 class InternetExplorerCompatibilityModeControl(BaseModel):
     """
-    Configure websites that should open using Internet Explorer compatibility mode.
+    Allow access to legacy websites using Internet Explorer compatibility mode.
     """ # noqa: E501
-    sites: Optional[Annotated[List[InternetExplorerCompatibilitySite], Field(max_length=1000)]] = Field(description="Websites and document modes to use for Internet Explorer compatibility mode.")
+    sites: Optional[Annotated[List[InternetExplorerCompatibilitySite], Field(max_length=1000)]] = Field(description="List of site entries, each pairing a URL pattern with an optional IE document mode. To clear the control, send either null or an empty array []; both mean no compatibility mode sites.")
     __properties: ClassVar[List[str]] = ["sites"]
 
     model_config = ConfigDict(

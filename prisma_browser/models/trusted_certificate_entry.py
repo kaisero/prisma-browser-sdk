@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 from typing import Any, ClassVar, Dict
 from typing_extensions import Annotated
 from typing import Optional, Set
@@ -31,6 +31,26 @@ class TrustedCertificateEntry(BaseModel):
     name: Annotated[str, Field(min_length=1, strict=True)] = Field(description="Display name for the certificate.")
     content: Annotated[str, Field(min_length=1, strict=True, max_length=1048576)] = Field(description="The certificate itself, as a single base64 string.")
     __properties: ClassVar[List[str]] = ["name", "content"]
+
+    @field_validator('name')
+    def name_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if not isinstance(value, str):
+            value = str(value)
+
+        if not re.match(r"\S", value):
+            raise ValueError(r"must validate the regular expression /\S/")
+        return value
+
+    @field_validator('content')
+    def content_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if not isinstance(value, str):
+            value = str(value)
+
+        if not re.match(r"\S", value):
+            raise ValueError(r"must validate the regular expression /\S/")
+        return value
 
     model_config = ConfigDict(
         validate_by_name=True,

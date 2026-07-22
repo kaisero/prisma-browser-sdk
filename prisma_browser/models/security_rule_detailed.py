@@ -17,11 +17,11 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import model_serializer, BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from prisma_browser.models.access_and_data_rule_detailed_metadata import AccessAndDataRuleDetailedMetadata
 from prisma_browser.models.get_scope import GetScope
-from prisma_browser.models.rule_mode import RuleMode
+from prisma_browser.models.restricted_rule_mode import RestrictedRuleMode
 from prisma_browser.models.section_ref import SectionRef
 from prisma_browser.models.security_controls import SecurityControls
 from typing import Optional, Set
@@ -37,9 +37,9 @@ class SecurityRuleDetailed(BaseModel):
     priority: StrictInt = Field(description="Order position of the rule in the list")
     section: Optional[SectionRef] = Field(default=None, description="Section this rule belongs to (null if standalone)")
     description: Optional[StrictStr] = Field(default=None, description="Detailed explanation of the rule's purpose")
-    mode: RuleMode
+    mode: RestrictedRuleMode
     scope: GetScope
-    controls: SecurityControls
+    controls: Optional[SecurityControls] = None
     metadata: AccessAndDataRuleDetailedMetadata
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "name", "priority", "section", "description", "mode", "scope", "controls", "metadata"]
@@ -51,6 +51,16 @@ class SecurityRuleDetailed(BaseModel):
         protected_namespaces=(),
     )
 
+
+    @model_serializer(mode="wrap")
+    def _phantasos_drop_empty_additional_properties(self, handler) -> Any:
+        """phantasos: omit an empty additional_properties bag from
+        model_dump()/model_dump_json(); non-empty bags are left untouched.
+        Respects exclude=/by_alias=/exclude_none=, so to_dict() is unchanged."""
+        data = handler(self)
+        if isinstance(data, dict) and data.get("additional_properties") == {}:
+            data.pop("additional_properties")
+        return data
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

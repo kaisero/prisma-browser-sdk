@@ -17,12 +17,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 from typing import Any, ClassVar, Dict, Optional
 from typing_extensions import Annotated
 from prisma_browser.models.policy_positioning import PolicyPositioning
 from prisma_browser.models.post_scope import PostScope
-from prisma_browser.models.rule_mode import RuleMode
+from prisma_browser.models.restricted_rule_mode import RestrictedRuleMode
 from prisma_browser.models.sign_in_rule_action import SignInRuleAction
 from typing import Optional, Set
 from typing_extensions import Self
@@ -34,11 +34,21 @@ class CreateSignInRuleRequest(BaseModel):
     """ # noqa: E501
     name: Annotated[str, Field(min_length=1, strict=True, max_length=300)] = Field(description="The name or title of the rule.")
     description: Optional[Annotated[str, Field(strict=True, max_length=300)]] = Field(default=None, description="The detailed description of the rule.")
-    mode: RuleMode
+    mode: RestrictedRuleMode
     scope: Optional[PostScope] = None
     action: SignInRuleAction
     positioning: Optional[PolicyPositioning] = None
     __properties: ClassVar[List[str]] = ["name", "description", "mode", "scope", "action", "positioning"]
+
+    @field_validator('name')
+    def name_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if not isinstance(value, str):
+            value = str(value)
+
+        if not re.match(r"\S", value):
+            raise ValueError(r"must validate the regular expression /\S/")
+        return value
 
     model_config = ConfigDict(
         validate_by_name=True,

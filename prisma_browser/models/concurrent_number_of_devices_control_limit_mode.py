@@ -21,7 +21,7 @@ from typing_extensions import Self
 
 class ConcurrentNumberOfDevicesControlLimitMode(LenientStrEnum):
     """
-    Whether the device limit applies to all devices combined or per device type.
+    Whether the device limit applies to all devices combined or per device type. Required when action is 'limited'. Must not be set when action is 'unlimited'.
     """
 
     """

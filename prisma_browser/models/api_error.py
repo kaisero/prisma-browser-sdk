@@ -26,7 +26,7 @@ from pydantic_core import to_jsonable_python
 
 class ApiError(BaseModel):
     """
-    Unified error response for all API endpoints
+    Standard error response returned by API endpoints. Each response contains an `error` object with a machine-readable `code`, a human-readable `message`, and a `timestamp`. Some errors include additional `details` whose structure depends on the specific error. This is a general-purpose error format that may be refined in future API versions.
     """ # noqa: E501
     error: ApiErrorError
     __properties: ClassVar[List[str]] = ["error"]

@@ -17,11 +17,12 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import model_serializer, BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from prisma_browser.models.access_and_data_rule_detailed_metadata import AccessAndDataRuleDetailedMetadata
+from prisma_browser.models.customization_controls import CustomizationControls
 from prisma_browser.models.get_scope import GetScope
-from prisma_browser.models.rule_mode import RuleMode
+from prisma_browser.models.restricted_rule_mode import RestrictedRuleMode
 from prisma_browser.models.section_ref import SectionRef
 from typing import Optional, Set
 from typing_extensions import Self
@@ -36,11 +37,12 @@ class CustomizationRuleDetailed(BaseModel):
     priority: StrictInt = Field(description="Order position of the rule in the list")
     section: Optional[SectionRef] = Field(default=None, description="Section this rule belongs to (null if standalone)")
     description: Optional[StrictStr] = Field(default=None, description="Detailed explanation of the rule's purpose")
-    mode: RuleMode
+    mode: RestrictedRuleMode
     scope: GetScope
+    controls: Optional[CustomizationControls] = None
     metadata: AccessAndDataRuleDetailedMetadata
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["id", "name", "priority", "section", "description", "mode", "scope", "metadata"]
+    __properties: ClassVar[List[str]] = ["id", "name", "priority", "section", "description", "mode", "scope", "controls", "metadata"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -49,6 +51,16 @@ class CustomizationRuleDetailed(BaseModel):
         protected_namespaces=(),
     )
 
+
+    @model_serializer(mode="wrap")
+    def _phantasos_drop_empty_additional_properties(self, handler) -> Any:
+        """phantasos: omit an empty additional_properties bag from
+        model_dump()/model_dump_json(); non-empty bags are left untouched.
+        Respects exclude=/by_alias=/exclude_none=, so to_dict() is unchanged."""
+        data = handler(self)
+        if isinstance(data, dict) and data.get("additional_properties") == {}:
+            data.pop("additional_properties")
+        return data
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -89,6 +101,9 @@ class CustomizationRuleDetailed(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of scope
         if self.scope:
             _dict['scope'] = self.scope.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of controls
+        if self.controls:
+            _dict['controls'] = self.controls.to_dict()
         # override the default output from pydantic by calling `to_dict()` of metadata
         if self.metadata:
             _dict['metadata'] = self.metadata.to_dict()
@@ -121,6 +136,7 @@ class CustomizationRuleDetailed(BaseModel):
             "description": obj.get("description"),
             "mode": obj.get("mode"),
             "scope": GetScope.from_dict(obj["scope"]) if obj.get("scope") is not None else None,
+            "controls": CustomizationControls.from_dict(obj["controls"]) if obj.get("controls") is not None else None,
             "metadata": AccessAndDataRuleDetailedMetadata.from_dict(obj["metadata"]) if obj.get("metadata") is not None else None
         })
         # store additional fields in additional_properties

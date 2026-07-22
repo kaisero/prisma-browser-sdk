@@ -19,7 +19,7 @@ from pydantic import Field, StrictBool, StrictStr, field_validator
 from typing import Optional
 from typing_extensions import Annotated
 from prisma_browser.models.create_customization_rule_request import CreateCustomizationRuleRequest
-from prisma_browser.models.create_security_rule201_response import CreateSecurityRule201Response
+from prisma_browser.models.created_id_response import CreatedIdResponse
 from prisma_browser.models.customization_rule_detailed import CustomizationRuleDetailed
 from prisma_browser.models.get_sign_in_policy200_response import GetSignInPolicy200Response
 from prisma_browser.models.patch_customization_rule_by_id_request import PatchCustomizationRuleByIDRequest
@@ -66,7 +66,7 @@ class CustomizationPolicyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> CreateSecurityRule201Response:
+    ) -> CreatedIdResponse:
         """Creates a new customization policy rule.
 
         Creates a new customization rule in the policy. The rule is created in the draft configuration and must be published to become active.
@@ -104,10 +104,11 @@ class CustomizationPolicyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "CreateSecurityRule201Response",
+            '201': "CreatedIdResponse",
             '400': "ApiError",
             '401': "ApiError",
             '403': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -137,7 +138,7 @@ class CustomizationPolicyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[CreateSecurityRule201Response]:
+    ) -> ApiResponse[CreatedIdResponse]:
         """Creates a new customization policy rule.
 
         Creates a new customization rule in the policy. The rule is created in the draft configuration and must be published to become active.
@@ -175,10 +176,11 @@ class CustomizationPolicyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "CreateSecurityRule201Response",
+            '201': "CreatedIdResponse",
             '400': "ApiError",
             '401': "ApiError",
             '403': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -246,10 +248,11 @@ class CustomizationPolicyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "CreateSecurityRule201Response",
+            '201': "CreatedIdResponse",
             '400': "ApiError",
             '401': "ApiError",
             '403': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -393,6 +396,7 @@ class CustomizationPolicyApi:
             '201': "SectionDetailed",
             '400': "ApiError",
             '403': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -463,6 +467,7 @@ class CustomizationPolicyApi:
             '201': "SectionDetailed",
             '400': "ApiError",
             '403': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -533,6 +538,7 @@ class CustomizationPolicyApi:
             '201': "SectionDetailed",
             '400': "ApiError",
             '403': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -678,6 +684,7 @@ class CustomizationPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -750,6 +757,7 @@ class CustomizationPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -822,6 +830,7 @@ class CustomizationPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -957,6 +966,7 @@ class CustomizationPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1032,6 +1042,7 @@ class CustomizationPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1107,6 +1118,7 @@ class CustomizationPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1251,6 +1263,7 @@ class CustomizationPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1330,6 +1343,7 @@ class CustomizationPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1409,6 +1423,7 @@ class CustomizationPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1556,6 +1571,7 @@ class CustomizationPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1631,6 +1647,7 @@ class CustomizationPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1706,6 +1723,7 @@ class CustomizationPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1846,6 +1864,7 @@ class CustomizationPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1921,6 +1940,7 @@ class CustomizationPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1996,6 +2016,7 @@ class CustomizationPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -2137,6 +2158,7 @@ class CustomizationPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -2213,6 +2235,7 @@ class CustomizationPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -2289,6 +2312,7 @@ class CustomizationPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -2441,6 +2465,7 @@ class CustomizationPolicyApi:
             '401': "SuspendUsers400Response",
             '403': "SuspendUsers400Response",
             '404': "SuspendUsers400Response",
+            '429': None,
             '500': "SuspendUsers400Response",
         }
         response_data = self.api_client.call_api(
@@ -2517,6 +2542,7 @@ class CustomizationPolicyApi:
             '401': "SuspendUsers400Response",
             '403': "SuspendUsers400Response",
             '404': "SuspendUsers400Response",
+            '429': None,
             '500': "SuspendUsers400Response",
         }
         response_data = self.api_client.call_api(
@@ -2593,6 +2619,7 @@ class CustomizationPolicyApi:
             '401': "SuspendUsers400Response",
             '403': "SuspendUsers400Response",
             '404': "SuspendUsers400Response",
+            '429': None,
             '500': "SuspendUsers400Response",
         }
         response_data = self.api_client.call_api(
@@ -2740,6 +2767,7 @@ class CustomizationPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -2811,6 +2839,7 @@ class CustomizationPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -2882,6 +2911,7 @@ class CustomizationPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -3031,6 +3061,7 @@ class CustomizationPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -3107,6 +3138,7 @@ class CustomizationPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -3183,6 +3215,7 @@ class CustomizationPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(

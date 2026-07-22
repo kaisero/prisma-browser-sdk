@@ -21,7 +21,7 @@ from typing_extensions import Self
 
 class LaunchingExternalApplicationsControlAction(LenientStrEnum):
     """
-    How Prisma Browser handles external application launch requests.
+    Launching External Applications action
     """
 
     """

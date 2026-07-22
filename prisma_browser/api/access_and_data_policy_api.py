@@ -20,9 +20,9 @@ from typing import Optional
 from typing_extensions import Annotated
 from prisma_browser.models.access_and_data_rule_detailed import AccessAndDataRuleDetailed
 from prisma_browser.models.create_access_and_data_rule_request import CreateAccessAndDataRuleRequest
-from prisma_browser.models.create_security_rule201_response import CreateSecurityRule201Response
+from prisma_browser.models.created_id_response import CreatedIdResponse
 from prisma_browser.models.get_sign_in_policy200_response import GetSignInPolicy200Response
-from prisma_browser.models.patch_customization_rule_by_id_request import PatchCustomizationRuleByIDRequest
+from prisma_browser.models.patch_access_and_data_rule_by_id_request import PatchAccessAndDataRuleByIDRequest
 from prisma_browser.models.patch_security_rule_by_id200_response import PatchSecurityRuleByID200Response
 from prisma_browser.models.positions_success_response import PositionsSuccessResponse
 from prisma_browser.models.section_detailed import SectionDetailed
@@ -66,10 +66,10 @@ class AccessAndDataPolicyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> CreateSecurityRule201Response:
+    ) -> CreatedIdResponse:
         """Creates a new access and data policy rule.
 
-        Creates a new access and data rule in the policy. The rule is created in the draft configuration and must be published to become active.
+        Creates a new access and data rule in the policy. The rule is created in the draft configuration and must be published to become active. When provided, the dataControls and loginControls objects must each contain at least one non-null control.
 
         :param create_access_and_data_rule_request: The name, mode and applications fields are required. (required)
         :type create_access_and_data_rule_request: CreateAccessAndDataRuleRequest
@@ -104,10 +104,11 @@ class AccessAndDataPolicyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "CreateSecurityRule201Response",
+            '201': "CreatedIdResponse",
             '400': "ApiError",
             '401': "ApiError",
             '403': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -137,10 +138,10 @@ class AccessAndDataPolicyApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[CreateSecurityRule201Response]:
+    ) -> ApiResponse[CreatedIdResponse]:
         """Creates a new access and data policy rule.
 
-        Creates a new access and data rule in the policy. The rule is created in the draft configuration and must be published to become active.
+        Creates a new access and data rule in the policy. The rule is created in the draft configuration and must be published to become active. When provided, the dataControls and loginControls objects must each contain at least one non-null control.
 
         :param create_access_and_data_rule_request: The name, mode and applications fields are required. (required)
         :type create_access_and_data_rule_request: CreateAccessAndDataRuleRequest
@@ -175,10 +176,11 @@ class AccessAndDataPolicyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "CreateSecurityRule201Response",
+            '201': "CreatedIdResponse",
             '400': "ApiError",
             '401': "ApiError",
             '403': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -211,7 +213,7 @@ class AccessAndDataPolicyApi:
     ) -> RESTResponseType:
         """Creates a new access and data policy rule.
 
-        Creates a new access and data rule in the policy. The rule is created in the draft configuration and must be published to become active.
+        Creates a new access and data rule in the policy. The rule is created in the draft configuration and must be published to become active. When provided, the dataControls and loginControls objects must each contain at least one non-null control.
 
         :param create_access_and_data_rule_request: The name, mode and applications fields are required. (required)
         :type create_access_and_data_rule_request: CreateAccessAndDataRuleRequest
@@ -246,10 +248,11 @@ class AccessAndDataPolicyApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '201': "CreateSecurityRule201Response",
+            '201': "CreatedIdResponse",
             '400': "ApiError",
             '401': "ApiError",
             '403': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -393,6 +396,7 @@ class AccessAndDataPolicyApi:
             '201': "SectionDetailed",
             '400': "ApiError",
             '403': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -463,6 +467,7 @@ class AccessAndDataPolicyApi:
             '201': "SectionDetailed",
             '400': "ApiError",
             '403': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -533,6 +538,7 @@ class AccessAndDataPolicyApi:
             '201': "SectionDetailed",
             '400': "ApiError",
             '403': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -678,6 +684,7 @@ class AccessAndDataPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -750,6 +757,7 @@ class AccessAndDataPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -822,6 +830,7 @@ class AccessAndDataPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -957,6 +966,7 @@ class AccessAndDataPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1032,6 +1042,7 @@ class AccessAndDataPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1107,6 +1118,7 @@ class AccessAndDataPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1251,6 +1263,7 @@ class AccessAndDataPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1330,6 +1343,7 @@ class AccessAndDataPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1409,6 +1423,7 @@ class AccessAndDataPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1556,6 +1571,7 @@ class AccessAndDataPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1631,6 +1647,7 @@ class AccessAndDataPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1706,6 +1723,7 @@ class AccessAndDataPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1846,6 +1864,7 @@ class AccessAndDataPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1921,6 +1940,7 @@ class AccessAndDataPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -1996,6 +2016,7 @@ class AccessAndDataPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -2078,7 +2099,7 @@ class AccessAndDataPolicyApi:
     def patch_access_and_data_rule_by_id(
         self,
         id: Annotated[str, Field(min_length=29, strict=True, max_length=29, description="The unique identifier of the rule to update.")],
-        patch_customization_rule_by_id_request: Annotated[PatchCustomizationRuleByIDRequest, Field(description="Partial rule fields to update. At least one field must be provided.")],
+        patch_access_and_data_rule_by_id_request: Annotated[PatchAccessAndDataRuleByIDRequest, Field(description="Partial rule fields to update. At least one field must be provided.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2094,12 +2115,12 @@ class AccessAndDataPolicyApi:
     ) -> PatchSecurityRuleByID200Response:
         """Partially update an Access and Data policy rule. All fields are optional.
 
-        Partially update an Access and Data rule object by its unique identifier. All fields are optional. 
+        Partially update an Access and Data rule object by its unique identifier. All fields are optional. When provided, the dataControls and loginControls objects must not be empty. 
 
         :param id: The unique identifier of the rule to update. (required)
         :type id: str
-        :param patch_customization_rule_by_id_request: Partial rule fields to update. At least one field must be provided. (required)
-        :type patch_customization_rule_by_id_request: PatchCustomizationRuleByIDRequest
+        :param patch_access_and_data_rule_by_id_request: Partial rule fields to update. At least one field must be provided. (required)
+        :type patch_access_and_data_rule_by_id_request: PatchAccessAndDataRuleByIDRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2124,7 +2145,7 @@ class AccessAndDataPolicyApi:
 
         _param = self._patch_access_and_data_rule_by_id_serialize(
             id=id,
-            patch_customization_rule_by_id_request=patch_customization_rule_by_id_request,
+            patch_access_and_data_rule_by_id_request=patch_access_and_data_rule_by_id_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2137,6 +2158,7 @@ class AccessAndDataPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -2154,7 +2176,7 @@ class AccessAndDataPolicyApi:
     def patch_access_and_data_rule_by_id_with_http_info(
         self,
         id: Annotated[str, Field(min_length=29, strict=True, max_length=29, description="The unique identifier of the rule to update.")],
-        patch_customization_rule_by_id_request: Annotated[PatchCustomizationRuleByIDRequest, Field(description="Partial rule fields to update. At least one field must be provided.")],
+        patch_access_and_data_rule_by_id_request: Annotated[PatchAccessAndDataRuleByIDRequest, Field(description="Partial rule fields to update. At least one field must be provided.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2170,12 +2192,12 @@ class AccessAndDataPolicyApi:
     ) -> ApiResponse[PatchSecurityRuleByID200Response]:
         """Partially update an Access and Data policy rule. All fields are optional.
 
-        Partially update an Access and Data rule object by its unique identifier. All fields are optional. 
+        Partially update an Access and Data rule object by its unique identifier. All fields are optional. When provided, the dataControls and loginControls objects must not be empty. 
 
         :param id: The unique identifier of the rule to update. (required)
         :type id: str
-        :param patch_customization_rule_by_id_request: Partial rule fields to update. At least one field must be provided. (required)
-        :type patch_customization_rule_by_id_request: PatchCustomizationRuleByIDRequest
+        :param patch_access_and_data_rule_by_id_request: Partial rule fields to update. At least one field must be provided. (required)
+        :type patch_access_and_data_rule_by_id_request: PatchAccessAndDataRuleByIDRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2200,7 +2222,7 @@ class AccessAndDataPolicyApi:
 
         _param = self._patch_access_and_data_rule_by_id_serialize(
             id=id,
-            patch_customization_rule_by_id_request=patch_customization_rule_by_id_request,
+            patch_access_and_data_rule_by_id_request=patch_access_and_data_rule_by_id_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2213,6 +2235,7 @@ class AccessAndDataPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -2230,7 +2253,7 @@ class AccessAndDataPolicyApi:
     def patch_access_and_data_rule_by_id_without_preload_content(
         self,
         id: Annotated[str, Field(min_length=29, strict=True, max_length=29, description="The unique identifier of the rule to update.")],
-        patch_customization_rule_by_id_request: Annotated[PatchCustomizationRuleByIDRequest, Field(description="Partial rule fields to update. At least one field must be provided.")],
+        patch_access_and_data_rule_by_id_request: Annotated[PatchAccessAndDataRuleByIDRequest, Field(description="Partial rule fields to update. At least one field must be provided.")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2246,12 +2269,12 @@ class AccessAndDataPolicyApi:
     ) -> RESTResponseType:
         """Partially update an Access and Data policy rule. All fields are optional.
 
-        Partially update an Access and Data rule object by its unique identifier. All fields are optional. 
+        Partially update an Access and Data rule object by its unique identifier. All fields are optional. When provided, the dataControls and loginControls objects must not be empty. 
 
         :param id: The unique identifier of the rule to update. (required)
         :type id: str
-        :param patch_customization_rule_by_id_request: Partial rule fields to update. At least one field must be provided. (required)
-        :type patch_customization_rule_by_id_request: PatchCustomizationRuleByIDRequest
+        :param patch_access_and_data_rule_by_id_request: Partial rule fields to update. At least one field must be provided. (required)
+        :type patch_access_and_data_rule_by_id_request: PatchAccessAndDataRuleByIDRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2276,7 +2299,7 @@ class AccessAndDataPolicyApi:
 
         _param = self._patch_access_and_data_rule_by_id_serialize(
             id=id,
-            patch_customization_rule_by_id_request=patch_customization_rule_by_id_request,
+            patch_access_and_data_rule_by_id_request=patch_access_and_data_rule_by_id_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2289,6 +2312,7 @@ class AccessAndDataPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -2301,7 +2325,7 @@ class AccessAndDataPolicyApi:
     def _patch_access_and_data_rule_by_id_serialize(
         self,
         id,
-        patch_customization_rule_by_id_request,
+        patch_access_and_data_rule_by_id_request,
         _request_auth,
         _content_type,
         _headers,
@@ -2329,8 +2353,8 @@ class AccessAndDataPolicyApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if patch_customization_rule_by_id_request is not None:
-            _body_params = patch_customization_rule_by_id_request
+        if patch_access_and_data_rule_by_id_request is not None:
+            _body_params = patch_access_and_data_rule_by_id_request
 
 
         # set the HTTP header `Accept`
@@ -2441,6 +2465,7 @@ class AccessAndDataPolicyApi:
             '401': "SuspendUsers400Response",
             '403': "SuspendUsers400Response",
             '404': "SuspendUsers400Response",
+            '429': None,
             '500': "SuspendUsers400Response",
         }
         response_data = self.api_client.call_api(
@@ -2517,6 +2542,7 @@ class AccessAndDataPolicyApi:
             '401': "SuspendUsers400Response",
             '403': "SuspendUsers400Response",
             '404': "SuspendUsers400Response",
+            '429': None,
             '500': "SuspendUsers400Response",
         }
         response_data = self.api_client.call_api(
@@ -2593,6 +2619,7 @@ class AccessAndDataPolicyApi:
             '401': "SuspendUsers400Response",
             '403': "SuspendUsers400Response",
             '404': "SuspendUsers400Response",
+            '429': None,
             '500': "SuspendUsers400Response",
         }
         response_data = self.api_client.call_api(
@@ -2740,6 +2767,7 @@ class AccessAndDataPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -2811,6 +2839,7 @@ class AccessAndDataPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -2882,6 +2911,7 @@ class AccessAndDataPolicyApi:
             '400': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -3031,6 +3061,7 @@ class AccessAndDataPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -3107,6 +3138,7 @@ class AccessAndDataPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(
@@ -3183,6 +3215,7 @@ class AccessAndDataPolicyApi:
             '401': "ApiError",
             '403': "ApiError",
             '404': "ApiError",
+            '429': None,
             '500': "ApiError",
         }
         response_data = self.api_client.call_api(

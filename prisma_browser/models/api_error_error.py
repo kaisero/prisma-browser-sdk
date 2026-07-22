@@ -18,10 +18,8 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import model_serializer, BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from prisma_browser.models.api_error_error_code import ApiErrorErrorCode
-from prisma_browser.models.api_error_error_details_inner import ApiErrorErrorDetailsInner
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -30,10 +28,11 @@ class ApiErrorError(BaseModel):
     """
     ApiErrorError
     """ # noqa: E501
-    code: ApiErrorErrorCode
+    code: StrictStr = Field(description="Machine-readable error code. Free-form string.")
     message: StrictStr = Field(description="Human-readable error message")
-    details: Optional[List[ApiErrorErrorDetailsInner]] = Field(default=None, description="Detailed error information")
+    details: Optional[Dict[str, Any]] = Field(default=None, description="Additional error context when available. Structure of each item varies by error code and may change without notice.")
     timestamp: datetime = Field(description="When the error occurred")
+    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["code", "message", "details", "timestamp"]
 
     model_config = ConfigDict(
@@ -43,6 +42,16 @@ class ApiErrorError(BaseModel):
         protected_namespaces=(),
     )
 
+
+    @model_serializer(mode="wrap")
+    def _phantasos_drop_empty_additional_properties(self, handler) -> Any:
+        """phantasos: omit an empty additional_properties bag from
+        model_dump()/model_dump_json(); non-empty bags are left untouched.
+        Respects exclude=/by_alias=/exclude_none=, so to_dict() is unchanged."""
+        data = handler(self)
+        if isinstance(data, dict) and data.get("additional_properties") == {}:
+            data.pop("additional_properties")
+        return data
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""
@@ -66,8 +75,12 @@ class ApiErrorError(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
+        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
+            "timestamp",
+            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -75,13 +88,11 @@ class ApiErrorError(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in details (list)
-        _items = []
-        if self.details:
-            for _item_details in self.details:
-                if _item_details:
-                    _items.append(_item_details.to_dict())
-            _dict['details'] = _items
+        # puts key-value pairs in additional_properties in the top level
+        if self.additional_properties is not None:
+            for _key, _value in self.additional_properties.items():
+                _dict[_key] = _value
+
         return _dict
 
     @classmethod
@@ -96,9 +107,14 @@ class ApiErrorError(BaseModel):
         _obj = cls.model_validate({
             "code": obj.get("code"),
             "message": obj.get("message"),
-            "details": [ApiErrorErrorDetailsInner.from_dict(_item) for _item in obj["details"]] if obj.get("details") is not None else None,
+            "details": obj.get("details"),
             "timestamp": obj.get("timestamp")
         })
+        # store additional fields in additional_properties
+        for _key in obj.keys():
+            if _key not in cls.__properties:
+                _obj.additional_properties[_key] = obj.get(_key)
+
         return _obj
 
 

@@ -33,7 +33,7 @@ class FlushBrowserDataControl(BaseModel):
     """ # noqa: E501
     action: FlushBrowserDataControlAction
     trigger: Optional[FlushBrowserDataControlTrigger] = None
-    data_types: Optional[Annotated[List[FlushBrowserDataControlDataTypesInner], Field(min_length=1, max_length=9)]] = Field(default=None, description="Browser data types to clear. At least one must be selected when action is 'enable'.", alias="dataTypes")
+    data_types: Optional[Annotated[List[FlushBrowserDataControlDataTypesInner], Field(min_length=1, max_length=8)]] = Field(default=None, description="Browser data types to clear. At least one must be selected when action is 'enable'.", alias="dataTypes")
     interval_hours: Optional[Annotated[int, Field(le=24, strict=True, ge=1)]] = Field(default=None, description="Time period in hours. Required when trigger is 'timePeriod'. Applies when action is 'enable'.", alias="intervalHours")
     __properties: ClassVar[List[str]] = ["action", "trigger", "dataTypes", "intervalHours"]
 
