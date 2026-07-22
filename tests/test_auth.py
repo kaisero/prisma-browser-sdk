@@ -1,0 +1,10 @@
+"""Auth component smoke tests (generated)."""
+
+from prisma_browser.extras import auth
+
+
+def test_auth_public_api() -> None:
+    assert callable(auth.api_client_from_env)
+    assert callable(auth.api_client_from_credentials)
+    assert hasattr(auth, "PrismaSaseConfiguration")
+
